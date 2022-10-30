@@ -8,6 +8,7 @@ namespace GamePack.Wpf.Style
         {
             InitializeComponent();
         }
+
         private void MinimizeButton_OnClick(object sender, RoutedEventArgs e)
         {
             var window = (System.Windows.Window)((FrameworkElement) sender).TemplatedParent;

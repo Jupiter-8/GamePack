@@ -90,6 +90,7 @@
                           Background="{StaticResource MainBackgroundBrush}">
 
                         <TextBlock
+                            Foreground="White"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Margin="10,5"
@@ -102,21 +103,21 @@
                             <Button
                                 x:Name="MinimizeButton"
                                 Click="MinimizeButton_OnClick"
-                                Content="&#xE921;"
+                                Content="&#9866;"
                                 FontFamily="{StaticResource 'Segoe MDL2 Assets'}"
                                 FontSize="11"
                                 Style="{StaticResource WindowChromeRestoreButton}"/>
                             <Button
                                 x:Name="MaximizeRestoreButton"
                                 Click="MaximizeRestoreButton_OnClick"
-                                Content="&#xE922;"
+                                Content="&#9744;"
                                 FontFamily="{StaticResource 'Segoe MDL2 Assets'}"
                                 FontSize="11"
                                 Style="{StaticResource WindowChromeRestoreButton}"/>
                             <Button
                                 x:Name="CloseButton"
                                 Click="CloseButton_OnClick"
-                                Content="&#xE88B;"
+                                Content="&#9747;"
                                 FontFamily="{StaticResource 'Segoe MDL2 Assets'}"
                                 FontSize="11"
                                 Style="{StaticResource WindowChromeRestoreButton}"/>

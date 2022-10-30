@@ -5,7 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GamePack.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        MinHeight="768"
+        MinWidth="1024"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Style="{StaticResource {x:Type Window}}">
     <Grid>
 
     </Grid>

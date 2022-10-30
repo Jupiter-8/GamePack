@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:GamePack.Wpf"
 >
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Style/Colors.xaml"/>
+                <ResourceDictionary Source="Style/Fonts.xaml"/>
+                <ResourceDictionary Source="Style/Window.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

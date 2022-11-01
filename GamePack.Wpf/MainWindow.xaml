@@ -25,5 +25,10 @@
         </Grid.Resources>
 
         <ContentControl Content="{Binding CurrentViewModel}"/>
+        <Frame 
+			Name="MainFrame"
+			Source="Pages/LoadingPage.xaml"
+			NavigationUIVisibility="Hidden"
+		/>
     </Grid>
 </Window>

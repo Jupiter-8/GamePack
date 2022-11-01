@@ -1,0 +1,96 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Storyboard
+		x:Key="HideProgressBarStoryboard"
+		BeginTime="00:00:04"
+		SpeedRatio="2">
+		<DoubleAnimation
+			Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+			From="0" To="20"/>
+	</Storyboard>
+	
+	<Style
+		TargetType="{x:Type ProgressBar}">
+		<Setter Property="Background" Value="{StaticResource ProgressBar.Background}"/>
+		<Setter Property="Foreground" Value="{StaticResource ProgressBar.Progress}"/>
+		<Setter Property="Height" Value="8"/>
+		<Setter Property="RenderTransform">
+			<Setter.Value>
+				<TranslateTransform/>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ProgressBar}">
+					<Grid Name="TemplateRoot">
+						<VisualStateManager.VisualStateGroups><VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Determinate"/>
+								<VisualState x:Name="Indeterminate">
+									<Storyboard RepeatBehavior="Forever">
+										<RectAnimation
+											Storyboard.TargetName="Stripe"
+											Storyboard.TargetProperty="(Shape.Fill).(TileBrush.Viewport)"
+											Duration="0:0:1"
+											From="0,0,8,8" To="-8,0,8,8"/>
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup></VisualStateManager.VisualStateGroups>
+						<Border Background="{TemplateBinding Background}"/>
+						<Rectangle Name="PART_Track"/>
+						<Grid x:Name="PART_Indicator"
+							  ClipToBounds="True"
+							  HorizontalAlignment="Left">
+							<Rectangle x:Name="Indicator"
+									   Fill="{TemplateBinding Foreground}"/>
+							<Rectangle
+			Name="Stripe"
+			FlowDirection="RightToLeft">
+			<Rectangle.Fill>
+				<DrawingBrush
+					TileMode="Tile"
+					Stretch="Uniform"
+					Viewport="0,0,8,8"
+					ViewportUnits="Absolute">
+					<DrawingBrush.Drawing>
+						<GeometryDrawing Brush="{StaticResource ProgressBar.Stripe}">
+							<GeometryDrawing.Geometry>
+								<PathGeometry>
+									<PathGeometry.Figures>
+										<PathFigureCollection>
+											<PathFigure StartPoint="0,0">
+												<LineSegment Point="5,0"/>
+												<LineSegment Point="10,5"/>
+												<LineSegment Point="10,10"/>
+											</PathFigure>
+											<PathFigure StartPoint="0,5">
+												<LineSegment Point="5,10"/>
+												<LineSegment Point="0,10"/>
+											</PathFigure>
+										</PathFigureCollection>
+									</PathGeometry.Figures>
+								</PathGeometry>
+							</GeometryDrawing.Geometry>
+						</GeometryDrawing>
+					</DrawingBrush.Drawing>
+				</DrawingBrush>
+			</Rectangle.Fill>
+		</Rectangle>
+						</Grid>
+					</Grid>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsIndeterminate" Value="True">
+							<Trigger.EnterActions>
+								<BeginStoryboard Storyboard="{StaticResource HideProgressBarStoryboard}"
+												 Name="HideProgressBarStoryboard"/>
+							</Trigger.EnterActions>
+							<Trigger.ExitActions>
+								<RemoveStoryboard 
+												 BeginStoryboardName="HideProgressBarStoryboard"/>
+							</Trigger.ExitActions>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>

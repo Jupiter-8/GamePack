@@ -87,7 +87,7 @@
                     <Grid x:Name="TitleBar"
                           Grid.Row="0"
                           Height="32"
-                          Background="{StaticResource MainBackgroundBrush}">
+                          Background="DarkSlateGray">
 
                         <TextBlock
                             Foreground="White"

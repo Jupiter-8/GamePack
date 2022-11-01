@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GamePack.Wpf"
+        xmlns:viewmodels="clr-namespace:GamePack.Wpf.ViewModels"
+        xmlns:views="clr-namespace:GamePack.Wpf.Views"
         mc:Ignorable="d"
         Title="GamePack" Height="450" Width="800"
         MinHeight="768"
@@ -11,7 +13,17 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         Style="{StaticResource {x:Type Window}}">
-    <Grid>
 
+    <Grid>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
+                <views:HomeView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:LibraryViewModel}">
+                <views:LibraryView />
+            </DataTemplate>
+        </Grid.Resources>
+
+        <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>

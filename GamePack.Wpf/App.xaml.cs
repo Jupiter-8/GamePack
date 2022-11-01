@@ -1,5 +1,7 @@
 ﻿using GamePack.DataAccess;
 using GamePack.Wpf.HostExtensions;
+using GamePack.Wpf.Stores;
+using GamePack.Wpf.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -36,8 +38,16 @@ namespace GamePack.Wpf
                 dbContext.Database.Migrate();
             }
 
-            Window window = new MainWindow();
-            window.Show();
+            NavigationStore navigationStore = new NavigationStore();
+
+            navigationStore.CurrentViewModel = new LibraryViewModel(navigationStore);
+
+            MainWindow = new MainWindow()
+            {
+                DataContext = new MainViewModel(navigationStore)
+            };
+
+            MainWindow.Show();
 
             base.OnStartup(e);
         }

@@ -4,11 +4,39 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GamePack.Wpf.Pages"
+      xmlns:attachedProperties="clr-namespace:GamePack.Wpf.Attached_Properties"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="829" d:DesignWidth="1538"
       Title="SignInPage">
-
-    <Grid>
         
+    <Grid>
+        <Border
+            MinHeight="745"
+            MinWidth="470"
+            Background="{StaticResource SearchBackgroundBrush}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <Grid>
+                <Path
+                    Data="{StaticResource logo_no_bg}"
+                    Margin="0,50.3" 
+                    Style="{StaticResource logo_no_bg_style}"/>
+
+                <TextBlock
+                    Text="CHOOSE HOW TO SIGN IN TO YOUR ACCOUNT"
+                    FontFamily="Brutal Type"
+                    FontWeight="Bold"
+                    FontSize="12"
+                    Foreground="{StaticResource CaptionFontBrush}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Margin="0, 131, 0 ,0"/>
+
+                <StackPanel
+                    Margin="0, 166, 0, 0">
+                    <attachedProperties:LoginServiceButtons/>
+                </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
 </Page>

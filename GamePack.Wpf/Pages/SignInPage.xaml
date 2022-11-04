@@ -34,9 +34,122 @@
 
                 <StackPanel
                     Margin="0, 166, 0, 0">
-                    <attachedProperties:LoginServiceButtons/>
+                    <attachedProperties:LoginServiceButtons
+                        Content="SIGN IN WITH GAMEPACK"
+                        IconHeight="25"
+                        IconWidth="22"
+                        Icon="{StaticResource logo_no_bg}"
+                        IconBackground="{StaticResource GamePackBackBrush}"
+                        IconBackgroundHover="{StaticResource GamePackBackHoverBrush}"
+                        IconFill="{StaticResource SignInIconsBackBrush}"/>
+
+                    <attachedProperties:LoginServiceButtons
+                        Content="SIGN IN WITH FACEBOOK"
+                        IconHeight="25"
+                        IconWidth="22"
+                        Icon="{StaticResource FBIcon}"
+                        IconBackground="{StaticResource FBBackBrush}"
+                        IconBackgroundHover="{StaticResource FBBackHoverBrush}"
+                        IconFill="{StaticResource SignInIconsBackBrush}"/>
+
+                    <attachedProperties:LoginServiceButtons
+                        Content="SIGN IN WITH GOOGLE"
+                        IconHeight="25"
+                        IconWidth="22"
+                        Icon="{StaticResource GoogleIcon}"
+                        IconBackground="{StaticResource GoogleBackBrush}"
+                        IconBackgroundHover="{StaticResource GoogleBackHoverBrush}"
+                        IconFill="{StaticResource GoogleIconBrush}"/>
+
+                    <attachedProperties:LoginServiceButtons
+                        Content="SIGN IN WITH XBOX LIVE"
+                        IconHeight="25"
+                        IconWidth="22"
+                        Icon="{StaticResource XBoxIcon}"
+                        IconBackground="{StaticResource XBoxBackBrush}"
+                        IconBackgroundHover="{StaticResource XBoxBackHoverBrush}"
+                        IconFill="{StaticResource SignInIconsBackBrush}"/>
+
+                    <attachedProperties:LoginServiceButtons
+                        Content="SIGN IN WITH PLAYSTATION NETWORK"
+                        IconHeight="25"
+                        IconWidth="22"
+                        Icon="{StaticResource PSIcon}"
+                        IconBackground="{StaticResource PSBackBrush}"
+                        IconBackgroundHover="{StaticResource PSBackHoverBrush}"
+                        IconFill="{StaticResource SignInIconsBackBrush}"/>
+
+                    <attachedProperties:LoginServiceButtons
+                        Content="SIGN IN WITH NINTENDO"
+                        IconHeight="40"
+                        IconWidth="65"
+                        Icon="{StaticResource NintendoIcon}"
+                        IconBackground="{StaticResource NintendoBackBrush}"
+                        IconBackgroundHover="{StaticResource NintendoBackHoverBrush}"
+                        IconFill="{StaticResource SignInIconsBackBrush}"/>
+
+                    <attachedProperties:LoginServiceButtons
+                        Content="SIGN IN WITH STEAM"
+                        IconHeight="25"
+                        IconWidth="22"
+                        Icon="{StaticResource SteamIcon}"
+                        IconBackground="{StaticResource SteamBackBrush}"
+                        IconBackgroundHover="{StaticResource SteamBackHoverBrush}"
+                        IconFill="{StaticResource SignInIconsBackBrush}"/>
+
+
+                    <attachedProperties:LoginServiceButtons
+                        Content="SIGN IN WITH APPLE"
+                        IconHeight="25"
+                        IconWidth="22"
+                        Icon="{StaticResource AppleIcon}"
+                        IconBackground="{StaticResource AppleBackBrush}"
+                        IconBackgroundHover="{StaticResource AppleBackHoverBrush}"
+                        IconFill="{StaticResource AppleIconBrush}"/>
+
+                    <TextBlock
+                        Foreground="{StaticResource DisabledFontBrush}"
+                        FontFamily="Brutal Type"
+                        FontSize="14"
+                        TextAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Margin="0,12"
+                        LineHeight="20">
+                        <Run Text="Don't have a Game Pack account?"/>
+                        <Hyperlink Foreground="{StaticResource CaptionFontBrush}" 
+                                   FontWeight="Bold"
+                                   TextDecorations="None">
+                            Sign Up
+                        </Hyperlink>
+                        <Run Text="or"/>
+                        <Hyperlink Foreground="{StaticResource CaptionFontBrush}" 
+                                   FontWeight="Bold"
+                                   TextDecorations="None"
+                                   Click="Hyperlink_OnClick">
+                            Sign In Later
+                        </Hyperlink>
+                    </TextBlock>
                 </StackPanel>
             </Grid>
         </Border>
+        <Button
+            Content="{StaticResource SettingsIcon}"
+            FontSize="14"
+            HorizontalAlignment="Left"
+            Margin="39, 0, 0, 35"
+            VerticalAlignment="Bottom"
+            Click="Button_OnClick">
+            <Button.Style>
+                <Style
+                    TargetType="{x:Type Button}"
+                    BasedOn="{StaticResource IconOnlyButtonStyle}">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource SettingsIconHoverBrush}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </Page>

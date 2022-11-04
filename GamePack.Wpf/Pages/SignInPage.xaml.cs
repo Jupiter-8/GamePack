@@ -24,5 +24,21 @@ namespace GamePack.Wpf.Pages
         {
             InitializeComponent();
         }
+
+        private void Hyperlink_OnClick(object sender, RoutedEventArgs e)
+        {
+            if(Application.Current.MainWindow != null)
+            {
+                ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(new Uri("../Pages/PreparingToLaunchStore.xaml", UriKind.RelativeOrAbsolute));
+            }
+        }
+
+        private void Button_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.MainWindow != null)
+            {
+                ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(new Uri("../Pages/SettingsPage.xaml", UriKind.RelativeOrAbsolute));
+            }
+        }
     }
 }

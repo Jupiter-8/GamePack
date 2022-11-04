@@ -87,12 +87,12 @@
     <SolidColorBrush x:Key="SignInIconsBackBrush" Color="{StaticResource SignInIconsColor}"/>
 
     <!--Epic Icon Background Color-->
-    <Color x:Key="EpicBackColor">#353535</Color>
-    <SolidColorBrush x:Key="EpicBackBrush" Color="{StaticResource EpicBackColor}"/>
+    <Color x:Key="GamePackBackColor">#353535</Color>
+    <SolidColorBrush x:Key="GamePackBackBrush" Color="{StaticResource GamePackBackColor}"/>
 
     <!--Epic Icon Hover Background Color-->
-    <Color x:Key="EpicBackHoverColor">#3E3D3D</Color>
-    <SolidColorBrush x:Key="EpicBackHoverBrush" Color="{StaticResource EpicBackHoverColor}"/>
+    <Color x:Key="GamePackBackHoverColor">#3E3D3D</Color>
+    <SolidColorBrush x:Key="GamePackBackHoverBrush" Color="{StaticResource GamePackBackHoverColor}"/>
 
     <!--Facebook Icon Background Color-->
     <Color x:Key="FBBackColor">#3261A3</Color>

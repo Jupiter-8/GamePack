@@ -15,14 +15,14 @@
         Style="{StaticResource {x:Type Window}}">
 
     <Grid>
-        <Grid.Resources>
+        <!--<Grid.Resources>
             <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
                 <views:HomeView />
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodels:LibraryViewModel}">
                 <views:LibraryView />
             </DataTemplate>
-        </Grid.Resources>
+        </Grid.Resources>-->
 
         <ContentControl Content="{Binding CurrentViewModel}"/>
         <Frame 

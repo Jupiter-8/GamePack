@@ -24,7 +24,7 @@
             </DataTemplate>
         </Grid.Resources>-->
 
-        <ContentControl Content="{Binding CurrentViewModel}"/>
+        <!--<ContentControl Content="{Binding CurrentViewModel}"/>-->
         <Frame 
 			Name="MainFrame"
 			Source="Pages/LoadingPage.xaml"

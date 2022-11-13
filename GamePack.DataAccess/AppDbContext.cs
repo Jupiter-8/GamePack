@@ -19,12 +19,17 @@ namespace GamePack.DataAccess
         /// <summary>
         /// DbSet to access Game entites.
         /// </summary>
-        public DbSet<Game> Games { get; }
+        public DbSet<Game> Games { get; set; }
 
         /// <summary>
         /// DbSet to access Category entites.
         /// </summary>
-        public DbSet<Category> Categories { get; }
+        public DbSet<Category> Categories { get; set; }
+
+        /// <summary>
+        /// DbSet to access User entites.
+        /// </summary>
+        public DbSet<User> Users { get; set; }
 
         /// <inheritdoc/>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -38,6 +43,12 @@ namespace GamePack.DataAccess
                 .HasOne(g => g.Category)
                 .WithMany(c => c.Games)
                 .HasForeignKey(x => x.CategoryId);
+
+            modelBuilder.Entity<Category>()
+                .HasKey(g => g.Id);
+
+            modelBuilder.Entity<User>()
+                .HasKey(g => g.Id);
         }
     }
 }

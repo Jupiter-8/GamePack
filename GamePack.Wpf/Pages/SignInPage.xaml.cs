@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GamePack.Wpf.Factories;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace GamePack.Wpf.Pages
 {
@@ -20,14 +11,25 @@ namespace GamePack.Wpf.Pages
     /// </summary>
     public partial class SignInPage : Page
     {
-        public SignInPage()
+        private readonly IAbstractFactory<SignInWithGamepackPage> _signInWithGamepackPageFactory;
+
+        public SignInPage(IAbstractFactory<SignInWithGamepackPage> signInWithGamepackPageFactory)
         {
             InitializeComponent();
+            _signInWithGamepackPageFactory = signInWithGamepackPageFactory;
+        }
+
+        private void SignInWithGamePack_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.MainWindow != null)
+            {
+                NavigationService.Navigate(_signInWithGamepackPageFactory.Create());
+            }
         }
 
         private void Hyperlink_OnClick(object sender, RoutedEventArgs e)
         {
-            if(Application.Current.MainWindow != null)
+            if (Application.Current.MainWindow != null)
             {
                 ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(new Uri("../Pages/PreparingToLaunchStore.xaml", UriKind.RelativeOrAbsolute));
             }

@@ -20,7 +20,7 @@
             DateTime lastRun,
             string iconPath,
             string exePath,
-            Guid categoryId) : base()
+            int categoryId) : base()
         {
             Title = title;
             DateAdded = dateAdded;
@@ -58,7 +58,7 @@
         /// <summary>
         /// Gets or sets category id.
         /// </summary>
-        public Guid CategoryId { get; set; }
+        public int CategoryId { get; set; }
 
         /// <summary>
         /// Get or sets category.

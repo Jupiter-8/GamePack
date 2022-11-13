@@ -18,6 +18,12 @@ namespace GamePack.Wpf.HostExtensions
 
                 services.AddDbContext<AppDbContext>(configureDbContext);
                 services.AddSingleton(new AppDbContextFactory(configureDbContext));
+
+                services.AddScoped(sp =>
+                {
+                    var dbContextFactory = sp.GetRequiredService<AppDbContextFactory>();
+                    return dbContextFactory.CreateDbContext();
+                });
             });
 
             return host;

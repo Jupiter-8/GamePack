@@ -2,7 +2,7 @@
 
 namespace GamePack.DataAccess
 {
-    public class AppDbContextFactory
+    public class AppDbContextFactory : IDbContextFactory<AppDbContext>
     {
         private readonly Action<DbContextOptionsBuilder> _configureDbContext;
 

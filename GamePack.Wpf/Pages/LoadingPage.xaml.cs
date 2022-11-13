@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GamePack.Wpf.Factories;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace GamePack.Wpf.Pages
@@ -21,21 +12,24 @@ namespace GamePack.Wpf.Pages
     /// </summary>
     public partial class LoadingPage : Page
     {
-        readonly DispatcherTimer _dispatcherTimer = new DispatcherTimer();
+        private readonly IAbstractFactory<SignInPage> _signInPageFactory;
+        private readonly DispatcherTimer _dispatcherTimer;
 
-        public LoadingPage()
+        public LoadingPage(IAbstractFactory<SignInPage> signInPageFactory)
         {
+            _dispatcherTimer = new DispatcherTimer();
+            _signInPageFactory = signInPageFactory;
             InitializeComponent();
-            _dispatcherTimer.Tick += _dispatcherTimer_Tick;
+            _dispatcherTimer.Tick += _dispatcherTimer_Tick!;
             _dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 5);
             _dispatcherTimer.Start();
         }
 
         private void _dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            if(Application.Current.MainWindow != null)
+            if (Application.Current.MainWindow != null)
             {
-                ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(new Uri("Pages/SignInPage.xaml", UriKind.RelativeOrAbsolute));
+                NavigationService.Navigate(_signInPageFactory.Create());
             }
             _dispatcherTimer.Stop();
         }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GamePack.Wpf.Factories;
+using GamePack.Wpf.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,14 @@ namespace GamePack.Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private Func<LoadingPage> _loadingPageFactory { get; }
+
+        public MainWindow(IAbstractFactory<LoadingPage> loadingPageFactory)
         {
             InitializeComponent();
+            // _loadingPageFactory = loadingPageFactory;
+            var loadingPage = loadingPageFactory.Create();
+            MainFrame.Navigate(loadingPage);
         }
     }
 }

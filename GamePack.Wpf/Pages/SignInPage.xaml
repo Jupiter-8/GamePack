@@ -41,7 +41,9 @@
                         Icon="{StaticResource logo_no_bg}"
                         IconBackground="{StaticResource GamePackBackBrush}"
                         IconBackgroundHover="{StaticResource GamePackBackHoverBrush}"
-                        IconFill="{StaticResource SignInIconsBackBrush}"/>
+                        IconFill="{StaticResource SignInIconsBackBrush}"
+                        Click="SignInWithGamePack_OnClick"
+                        />
 
                     <attachedProperties:LoginServiceButtons
                         Content="SIGN IN WITH FACEBOOK"

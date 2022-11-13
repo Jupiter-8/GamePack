@@ -1,5 +1,7 @@
 ﻿using GamePack.DataAccess;
+using GamePack.Wpf.Factories;
 using GamePack.Wpf.HostExtensions;
+using GamePack.Wpf.Pages;
 using GamePack.Wpf.Stores;
 using GamePack.Wpf.ViewModels;
 using Microsoft.EntityFrameworkCore;
@@ -25,12 +27,18 @@ namespace GamePack.Wpf
         {
             return Host.CreateDefaultBuilder(args)
                 .AddDbContext()
-                .AddConfiguration();
+                .AddConfiguration()
+                .AddServices()
+                .AddTypeFactory<LoadingPage>()
+                .AddTypeFactory<SignInPage>()
+                .AddTypeFactory<SignInWithGamepackPage>();
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
             _host.Start();
+
+            AppDbContext d = _host.Services.GetRequiredService<AppDbContext>();
 
             AppDbContextFactory contextFactory = _host.Services.GetRequiredService<AppDbContextFactory>();
             using (AppDbContext dbContext = contextFactory.CreateDbContext())
@@ -42,7 +50,7 @@ namespace GamePack.Wpf
 
             navigationStore.CurrentViewModel = new LibraryViewModel(navigationStore);
 
-            MainWindow = new MainWindow()
+            MainWindow = new MainWindow(_host.Services.GetRequiredService<IAbstractFactory<LoadingPage>>())
             {
                 DataContext = new MainViewModel(navigationStore)
             };

@@ -1,0 +1,85 @@
+﻿<Page x:Class="GamePack.Wpf.Pages.SignInWithGamepackPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GamePack.Wpf.Pages"
+      xmlns:attachedProperties="clr-namespace:GamePack.Wpf.Attached_Properties"
+      mc:Ignorable="d" 
+      d:DesignHeight="829" d:DesignWidth="1538"
+      Title="SignInWithGamepackPage">
+
+    <Grid>
+        <Border
+            MinHeight="745"
+            MinWidth="470"
+            Background="{StaticResource SearchBackgroundBrush}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <Grid>
+                <Path
+                    Data="{StaticResource logo_no_bg}"
+                    Margin="0,50.3" 
+                    Style="{StaticResource logo_no_bg_style}"/>
+
+                <TextBlock
+                    Text="SIGN IN WITH YOUR GAMEPACK ACCOUNT"
+                    FontFamily="Brutal Type"
+                    FontWeight="Bold"
+                    FontSize="12"
+                    Foreground="{StaticResource CaptionFontBrush}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Margin="0, 131, 0 ,0"/>
+
+                <StackPanel
+                    Margin="0, 166, 0, 0"
+                >
+                    <TextBox
+                        Margin="0, 20, 0, 20"
+                        Height="30"
+                        Width="350"
+                        FontSize="17"
+                        Text="{Binding Path=Username, Mode=TwoWay}"
+                    >
+                    </TextBox>
+                    <TextBox
+                        Margin="0, 10, 0, 30"
+                        Height="30"
+                        Width="350"
+                        FontSize="17"
+                        Text="{Binding Path=Password, Mode=TwoWay}"
+                    >
+                    </TextBox>
+                    <attachedProperties:LoginServiceButtons
+                        Content="SIGN IN"
+                        IconHeight="25"
+                        IconWidth="22"
+                        Icon="{StaticResource logo_no_bg}"
+                        IconBackground="{StaticResource GamePackBackBrush}"
+                        IconBackgroundHover="{StaticResource GamePackBackHoverBrush}"
+                        IconFill="{StaticResource SignInIconsBackBrush}"
+                        Click="SignIn_Click"
+                        />
+
+                    <TextBlock
+                        Foreground="{StaticResource DisabledFontBrush}"
+                        FontFamily="Brutal Type"
+                        FontSize="14"
+                        TextAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Margin="0,12"
+                        LineHeight="20">
+                        <Hyperlink Foreground="{StaticResource CaptionFontBrush}" 
+                                   FontWeight="Bold"
+                                   TextDecorations="None"
+                                   Click="BackToSignInPage_Click"
+                                   >
+                            Back to the Sign In Menu
+                        </Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GamePack.DataAccess\GamePack.DataAccess.csproj" />
+    <ProjectReference Include="..\GamePack.Services\GamePack.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

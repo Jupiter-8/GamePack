@@ -31,7 +31,8 @@ namespace GamePack.Wpf
                 .AddServices()
                 .AddTypeFactory<LoadingPage>()
                 .AddTypeFactory<SignInPage>()
-                .AddTypeFactory<SignInWithGamepackPage>();
+                .AddTypeFactory<SignInWithGamepackPage>()
+                .AddTypeFactory<PreparingToLaunchStorePage>();
         }
 
         protected override void OnStartup(StartupEventArgs e)

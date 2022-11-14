@@ -1,4 +1,4 @@
-﻿<Page x:Class="GamePack.Wpf.Pages.PreparingToLaunchStore"
+﻿<Page x:Class="GamePack.Wpf.Pages.PreparingToLaunchStorePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:GamePack.Wpf.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="869" d:DesignWidth="1538"
-      Title="PreparingToLaunchStore">
+      Title="PreparingToLaunchStorePage">
 
     <Grid>
         <Grid

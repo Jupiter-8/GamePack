@@ -15,14 +15,19 @@ namespace GamePack.Wpf.Pages
     public partial class SignInWithGamepackPage : Page, INotifyPropertyChanged
     {
         private readonly IAbstractFactory<SignInPage> _signInPageFactory;
+        private readonly IAbstractFactory<PreparingToLaunchStorePage> _preparingToLaunchStorePageFactory;
         private readonly IUserService _userService;
 
-        public SignInWithGamepackPage(IUserService userService, IAbstractFactory<SignInPage> signInPageFactory)
+        public SignInWithGamepackPage(
+            IUserService userService,
+            IAbstractFactory<SignInPage> signInPageFactory,
+            IAbstractFactory<PreparingToLaunchStorePage> preparingToLaunchStorePageFactory)
         {
             DataContext = this;
             _userService = userService;
             InitializeComponent();
             _signInPageFactory = signInPageFactory;
+            _preparingToLaunchStorePageFactory = preparingToLaunchStorePageFactory;
         }
 
         private string _username;
@@ -53,16 +58,48 @@ namespace GamePack.Wpf.Pages
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        private string _errorMessage;
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set
+            {
+                if (_errorMessage != value)
+                {
+                    _errorMessage = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(_username) || string.IsNullOrEmpty(_password))
+            {
+                ErrorMessage = "Username and password must be provided.";
+                return;
+            }
+
             var user = _userService.SignIn(_username, _password);
-            Console.WriteLine();
+
+            if (user == null)
+            {
+                ErrorMessage = "Cannot Sign In, username or password is wrong";
+                return;
+            }
+
+            ErrorMessage = string.Empty;
+            if (Application.Current.MainWindow != null)
+            {
+                NavigationService.Navigate(_preparingToLaunchStorePageFactory.Create());
+            }
         }
 
         private void BackToSignInPage_Click(object sender, RoutedEventArgs e)

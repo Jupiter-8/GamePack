@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GamePack.Wpf.Pages"
+      xmlns:components="clr-namespace:GamePack.Wpf.Components"
       xmlns:attachedProperties="clr-namespace:GamePack.Wpf.Attached_Properties"
       mc:Ignorable="d" 
       d:DesignHeight="829" d:DesignWidth="1538"
@@ -35,22 +36,43 @@
                 <StackPanel
                     Margin="0, 166, 0, 0"
                 >
+                    <TextBlock
+                        Foreground="{StaticResource CaptionFontBrush}" 
+                        FontFamily="Brutal Type"
+                        FontSize="14"
+                        HorizontalAlignment="Left"
+                        Margin="60, 10, 0, 0"
+                        LineHeight="10">
+                        Username
+                    </TextBlock>
                     <TextBox
-                        Margin="0, 20, 0, 20"
+                        Foreground="White"
+                        Background="DimGray"
+                        CaretBrush="White"
+                        Cursor="Arrow"
+                        FontFamily="Brutal Type"
+                        Margin="0, 7, 0, 20"
                         Height="30"
                         Width="350"
                         FontSize="17"
                         Text="{Binding Path=Username, Mode=TwoWay}"
                     >
                     </TextBox>
-                    <TextBox
-                        Margin="0, 10, 0, 30"
+                    <TextBlock
+                        Foreground="{StaticResource CaptionFontBrush}" 
+                        FontFamily="Brutal Type"
+                        FontSize="14"
+                        HorizontalAlignment="Left"
+                        Margin="60, 10, 0, 0"
+                        LineHeight="10">
+                        Password
+                    </TextBlock>
+                    <components:BindablePasswordBox
+                        Margin="0, 7, 0, 20"
                         Height="30"
                         Width="350"
                         FontSize="17"
-                        Text="{Binding Path=Password, Mode=TwoWay}"
-                    >
-                    </TextBox>
+                        Password="{Binding Password}" />
                     <attachedProperties:LoginServiceButtons
                         Content="SIGN IN"
                         IconHeight="25"
@@ -59,8 +81,7 @@
                         IconBackground="{StaticResource GamePackBackBrush}"
                         IconBackgroundHover="{StaticResource GamePackBackHoverBrush}"
                         IconFill="{StaticResource SignInIconsBackBrush}"
-                        Click="SignIn_Click"
-                        />
+                        Click="SignIn_Click" />
 
                     <TextBlock
                         Foreground="{StaticResource DisabledFontBrush}"
@@ -77,6 +98,16 @@
                                    >
                             Back to the Sign In Menu
                         </Hyperlink>
+                    </TextBlock>
+                    <TextBlock
+                        Foreground="Red"
+                        FontFamily="Brutal Type"
+                        FontSize="14"
+                        TextAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Margin="0,12"
+                        LineHeight="20"
+                        Text="{Binding Path=ErrorMessage}">
                     </TextBlock>
                 </StackPanel>
             </Grid>

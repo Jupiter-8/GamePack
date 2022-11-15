@@ -120,7 +120,8 @@
                         <Run Text="Don't have a Game Pack account?"/>
                         <Hyperlink Foreground="{StaticResource CaptionFontBrush}" 
                                    FontWeight="Bold"
-                                   TextDecorations="None">
+                                   TextDecorations="None"
+                                   Click="SignUp_OnClick">
                             Sign Up
                         </Hyperlink>
                         <Run Text="or"/>

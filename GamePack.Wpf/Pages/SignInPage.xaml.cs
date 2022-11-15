@@ -12,11 +12,15 @@ namespace GamePack.Wpf.Pages
     public partial class SignInPage : Page
     {
         private readonly IAbstractFactory<SignInWithGamepackPage> _signInWithGamepackPageFactory;
+        private readonly IAbstractFactory<SignUpPage> _signUpPageFactory;
 
-        public SignInPage(IAbstractFactory<SignInWithGamepackPage> signInWithGamepackPageFactory)
+        public SignInPage(
+            IAbstractFactory<SignInWithGamepackPage> signInWithGamepackPageFactory,
+            IAbstractFactory<SignUpPage> signUpPageFactory)
         {
             InitializeComponent();
             _signInWithGamepackPageFactory = signInWithGamepackPageFactory;
+            _signUpPageFactory = signUpPageFactory;
         }
 
         private void SignInWithGamePack_OnClick(object sender, RoutedEventArgs e)
@@ -40,6 +44,14 @@ namespace GamePack.Wpf.Pages
             if (Application.Current.MainWindow != null)
             {
                 ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(new Uri("../Pages/SettingsPage.xaml", UriKind.RelativeOrAbsolute));
+            }
+        }
+
+        private void SignUp_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.MainWindow != null)
+            {
+                NavigationService.Navigate(_signUpPageFactory.Create());
             }
         }
     }

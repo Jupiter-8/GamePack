@@ -11,16 +11,19 @@ namespace GamePack.Wpf.Pages
     /// </summary>
     public partial class SignInPage : Page
     {
+        private readonly IAbstractFactory<PreparingToLaunchStorePage> _preparingToLaunchStorePageFactory;
         private readonly IAbstractFactory<SignInWithGamepackPage> _signInWithGamepackPageFactory;
         private readonly IAbstractFactory<SignUpPage> _signUpPageFactory;
 
         public SignInPage(
             IAbstractFactory<SignInWithGamepackPage> signInWithGamepackPageFactory,
-            IAbstractFactory<SignUpPage> signUpPageFactory)
+            IAbstractFactory<SignUpPage> signUpPageFactory,
+            IAbstractFactory<PreparingToLaunchStorePage> preparingToLaunchStorePageFactory)
         {
             InitializeComponent();
             _signInWithGamepackPageFactory = signInWithGamepackPageFactory;
             _signUpPageFactory = signUpPageFactory;
+            _preparingToLaunchStorePageFactory = preparingToLaunchStorePageFactory;
         }
 
         private void SignInWithGamePack_OnClick(object sender, RoutedEventArgs e)
@@ -31,11 +34,11 @@ namespace GamePack.Wpf.Pages
             }
         }
 
-        private void Hyperlink_OnClick(object sender, RoutedEventArgs e)
+        private void SignInLater_OnClick(object sender, RoutedEventArgs e)
         {
             if (Application.Current.MainWindow != null)
             {
-                ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(new Uri("../Pages/PreparingToLaunchStore.xaml", UriKind.RelativeOrAbsolute));
+                NavigationService.Navigate(_preparingToLaunchStorePageFactory.Create());
             }
         }
 

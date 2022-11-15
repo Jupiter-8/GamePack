@@ -128,7 +128,7 @@
                         <Hyperlink Foreground="{StaticResource CaptionFontBrush}" 
                                    FontWeight="Bold"
                                    TextDecorations="None"
-                                   Click="Hyperlink_OnClick">
+                                   Click="SignInLater_OnClick">
                             Sign In Later
                         </Hyperlink>
                     </TextBlock>

@@ -54,7 +54,7 @@ namespace GamePack.Wpf.Pages
         {
             if (Application.Current.MainWindow != null)
             {
-                NavigationService.Navigate(_signUpPageFactory.Create());
+                ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(_signUpPageFactory.Create());
             }
         }
     }

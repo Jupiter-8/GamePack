@@ -1,6 +1,7 @@
 ﻿using GamePack.DataAccess;
 using GamePack.Services.Interfaces;
 using GamePack.Wpf.Factories;
+using GamePack.Wpf.Stores;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -17,17 +18,20 @@ namespace GamePack.Wpf.Pages
         private readonly IAbstractFactory<SignInPage> _signInPageFactory;
         private readonly IAbstractFactory<PreparingToLaunchStorePage> _preparingToLaunchStorePageFactory;
         private readonly IUserService _userService;
+        private readonly UserStore _userStore;
 
         public SignInWithGamepackPage(
             IUserService userService,
             IAbstractFactory<SignInPage> signInPageFactory,
-            IAbstractFactory<PreparingToLaunchStorePage> preparingToLaunchStorePageFactory)
+            IAbstractFactory<PreparingToLaunchStorePage> preparingToLaunchStorePageFactory,
+            UserStore userStore)
         {
             DataContext = this;
             _userService = userService;
             InitializeComponent();
             _signInPageFactory = signInPageFactory;
             _preparingToLaunchStorePageFactory = preparingToLaunchStorePageFactory;
+            _userStore = userStore;
         }
 
         private string _username;
@@ -95,6 +99,7 @@ namespace GamePack.Wpf.Pages
                 return;
             }
 
+            _userStore.SignIn(user);
             ErrorMessage = string.Empty;
             if (Application.Current.MainWindow != null)
             {

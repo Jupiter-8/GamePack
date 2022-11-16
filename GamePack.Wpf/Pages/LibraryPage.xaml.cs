@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GamePack.Wpf.Factories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,32 @@ namespace GamePack.Wpf.Pages
     /// </summary>
     public partial class LibraryPage : Page
     {
-        public LibraryPage()
+        private readonly IAbstractFactory<HomePage> _homePageFactory;
+        private readonly IAbstractFactory<ProfilePage> _profilePageFactory;
+
+        public LibraryPage(
+            IAbstractFactory<HomePage> homePageFactory,
+            IAbstractFactory<ProfilePage> profilePageFactory)
         {
             InitializeComponent();
+            _homePageFactory = homePageFactory;
+            _profilePageFactory = profilePageFactory;
+        }
+
+        private void HomePage_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.MainWindow != null)
+            {
+                ((MainWindow)Application.Current.MainWindow).SubFrame.Navigate(_homePageFactory.Create());
+            }
+        }
+
+        private void ProfilePage_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.MainWindow != null)
+            {
+                ((MainWindow)Application.Current.MainWindow).SubFrame.Navigate(_profilePageFactory.Create());
+            }
         }
     }
 }

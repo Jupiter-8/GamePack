@@ -1,4 +1,4 @@
-﻿<Page x:Class="GamePack.Wpf.Pages.LoadingPage"
+﻿<Page x:Class="GamePack.Wpf.Pages.ProfilePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,13 +6,9 @@
       xmlns:local="clr-namespace:GamePack.Wpf.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="600"
-      Title="LoadingPage">
+      Title="ProfilePage">
 
-    <Grid>
-		<ProgressBar
-			IsIndeterminate="True" 
-			HorizontalAlignment="Stretch"
-			VerticalAlignment="Bottom"
-			Margin="5"/>
-	</Grid>
+    <Grid Background="Green">
+        
+    </Grid>
 </Page>

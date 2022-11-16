@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GamePack.Wpf.Factories;
+using GamePack.Wpf.Stores;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
@@ -10,14 +12,20 @@ namespace GamePack.Wpf.Pages
     /// </summary>
     public partial class PreparingToLaunchStorePage : Page
     {
+        private readonly IAbstractFactory<LibraryPage> _libraryPageFactory;
         readonly DispatcherTimer _dispatcherTimer = new DispatcherTimer();
+        private readonly UserStore _userStore;
 
-        public PreparingToLaunchStorePage()
+        public PreparingToLaunchStorePage(
+            UserStore userStore,
+            IAbstractFactory<LibraryPage> libraryPageFactory)
         {
             InitializeComponent();
             _dispatcherTimer.Tick += _dispatcherTimer_Tick;
             _dispatcherTimer.Interval = new TimeSpan(0, 0, 2);
             _dispatcherTimer.Start();
+            _userStore = userStore;
+            _libraryPageFactory = libraryPageFactory;
         }
 
         private void _dispatcherTimer_Tick(object? sender, EventArgs e)
@@ -36,7 +44,7 @@ namespace GamePack.Wpf.Pages
         {
             if (Application.Current.MainWindow != null)
             {
-                ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(new Uri("Pages/LibraryPage.xaml", UriKind.RelativeOrAbsolute));
+                NavigationService.Navigate(_libraryPageFactory.Create());
             }
             _dispatcherTimer.Stop();
         }

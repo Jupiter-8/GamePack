@@ -67,7 +67,8 @@
                             <attachedProperties:CheckableMenuButton
                                 Content="Home"
                                 Icon="{StaticResource HomeIcon}"
-                                Style="{StaticResource  SideNavigationCheckableMenuButtonsStyle}"/>
+                                Style="{StaticResource  SideNavigationCheckableMenuButtonsStyle}"
+                                Click="HomePage_OnClick"/>
                             <attachedProperties:CheckableMenuButton
                                 Content="Library"
                                 Icon="{StaticResource LibraryIcon}"
@@ -75,7 +76,8 @@
                             <attachedProperties:CheckableMenuButton
                                 Content="Profile"
                                 Icon="{StaticResource ProfileIcon}"
-                                Style="{StaticResource  SideNavigationCheckableMenuButtonsStyle}"/>
+                                Style="{StaticResource  SideNavigationCheckableMenuButtonsStyle}"
+                                Click="ProfilePage_OnClick"/>
                         </StackPanel>
                     </attachedProperties:SideNavigationMenu.MenuButtonsContainer>
 

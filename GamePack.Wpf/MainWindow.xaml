@@ -15,17 +15,13 @@
         Style="{StaticResource {x:Type Window}}">
 
     <Grid>
-        <!--<Grid.Resources>
-            <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
-                <views:HomeView />
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type viewmodels:LibraryViewModel}">
-                <views:LibraryView />
-            </DataTemplate>
-        </Grid.Resources>-->
-
-        <!--<ContentControl Content="{Binding CurrentViewModel}"/>-->
-        <Frame 
+        <Frame
+            Background="Transparent"
+            Width="774"
+			Name="SubFrame"
+			NavigationUIVisibility="Hidden" Margin="238,0,0,0"
+		/>
+        <Frame
 			Name="MainFrame"
 			Source="Pages/LoadingPage.xaml"
 			NavigationUIVisibility="Hidden"

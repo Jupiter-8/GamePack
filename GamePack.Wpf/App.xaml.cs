@@ -29,11 +29,15 @@ namespace GamePack.Wpf
                 .AddDbContext()
                 .AddConfiguration()
                 .AddServices()
+                .AddStores()
                 .AddTypeFactory<LoadingPage>()
                 .AddTypeFactory<SignInPage>()
                 .AddTypeFactory<SignInWithGamepackPage>()
                 .AddTypeFactory<PreparingToLaunchStorePage>()
-                .AddTypeFactory<SignUpPage>();
+                .AddTypeFactory<SignUpPage>()
+                .AddTypeFactory<HomePage>()
+                .AddTypeFactory<ProfilePage>()
+                .AddTypeFactory<LibraryPage>();
         }
 
         protected override void OnStartup(StartupEventArgs e)

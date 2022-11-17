@@ -4,8 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GamePack.Wpf"
-        xmlns:viewmodels="clr-namespace:GamePack.Wpf.ViewModels"
-        xmlns:views="clr-namespace:GamePack.Wpf.Views"
         mc:Ignorable="d"
         Title="GamePack" Height="450" Width="800"
         MinHeight="768"

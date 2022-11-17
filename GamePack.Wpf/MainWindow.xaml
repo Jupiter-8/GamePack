@@ -17,9 +17,10 @@
     <Grid>
         <Frame
             Background="Transparent"
-            Width="774"
+            Width="Auto"
 			Name="SubFrame"
-			NavigationUIVisibility="Hidden" Margin="238,0,0,0"
+			NavigationUIVisibility="Hidden" Margin="250,0,0,0"
+ 
 		/>
         <Frame
 			Name="MainFrame"

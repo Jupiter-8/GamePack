@@ -22,15 +22,21 @@ namespace GamePack.Wpf.Pages
     public partial class LibraryPage : Page
     {
         private readonly IAbstractFactory<HomePage> _homePageFactory;
+        private readonly IAbstractFactory<ProfilePage> _libraryPageFactory;
         private readonly IAbstractFactory<ProfilePage> _profilePageFactory;
+        private readonly IAbstractFactory<SettingsPage> _settingsPageFactory;
 
         public LibraryPage(
             IAbstractFactory<HomePage> homePageFactory,
-            IAbstractFactory<ProfilePage> profilePageFactory)
+            IAbstractFactory<ProfilePage> profilePageFactory,
+            IAbstractFactory<SettingsPage> settingsPageFactory,
+            IAbstractFactory<ProfilePage> libraryPageFactory)
         {
             InitializeComponent();
             _homePageFactory = homePageFactory;
             _profilePageFactory = profilePageFactory;
+            _settingsPageFactory = settingsPageFactory;
+            _libraryPageFactory = libraryPageFactory;
         }
 
         private void HomePage_OnClick(object sender, RoutedEventArgs e)
@@ -41,11 +47,27 @@ namespace GamePack.Wpf.Pages
             }
         }
 
+        private void LibraryPage_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.MainWindow != null)
+            {
+                ((MainWindow)Application.Current.MainWindow).SubFrame.Navigate(_libraryPageFactory.Create());
+            }
+        }
+
         private void ProfilePage_OnClick(object sender, RoutedEventArgs e)
         {
             if (Application.Current.MainWindow != null)
             {
                 ((MainWindow)Application.Current.MainWindow).SubFrame.Navigate(_profilePageFactory.Create());
+            }
+        }
+
+        private void SettingsPage_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.MainWindow != null)
+            {
+                ((MainWindow)Application.Current.MainWindow).SubFrame.Navigate(_settingsPageFactory.Create());
             }
         }
     }

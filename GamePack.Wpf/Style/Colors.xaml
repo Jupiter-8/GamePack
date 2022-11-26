@@ -211,9 +211,9 @@
     <!--#endregion-->
 
     <!--#region ComboBox Brushes-->
-    <SolidColorBrush x:Key="ComboBox.Static.Background" Color="#6C6D6D"/>
+    <SolidColorBrush x:Key="ComboBox.Static.Background" Color="Transparent"/>
 
-    <SolidColorBrush x:Key="ComboBox.Static.Border" Color="#FFACACAC"/>
+    <SolidColorBrush x:Key="ComboBox.Static.Border" Color="#FFFFFF"/>
 
     <SolidColorBrush x:Key="ComboBox.Static.Editable.Background" Color="#FFFFFFFF"/>
     <SolidColorBrush x:Key="ComboBox.Static.Editable.Border" Color="#FFABADB3"/>

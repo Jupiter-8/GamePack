@@ -41,7 +41,7 @@
                         FontWeight="Bold"
                         Foreground="{StaticResource CaptionFontBrush}"
                         TextAlignment="Center"
-                        Text="PREPARING THE GAME PACK"/>
+                        Text="PREPARING THE GAMEPACK"/>
 
             </StackPanel>
         </Grid>

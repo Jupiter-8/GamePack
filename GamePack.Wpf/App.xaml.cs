@@ -35,10 +35,9 @@ namespace GamePack.Wpf
                 .AddTypeFactory<SignUpPage>()
                 .AddTypeFactory<HomePage>()
                 .AddTypeFactory<ProfilePage>()
-                .AddTypeFactory<LibraryPage>()
-                .AddTypeFactory<SettingsPage>();
-
-
+                .AddTypeFactory<MainPage>()
+                .AddTypeFactory<SettingsPage>()
+                .AddTypeFactory<LibraryPage>();
         }
 
         protected override void OnStartup(StartupEventArgs e)

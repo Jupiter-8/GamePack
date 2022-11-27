@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="600"
       Title="ProfilePage">
 
-    <Grid Background="Green">
+    <Grid Background="Beige">
         
     </Grid>
 </Page>

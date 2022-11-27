@@ -20,14 +20,8 @@ namespace GamePack.Wpf.Stores
 
         public event Action CurrentUserChanged;
 
-        public void SignIn(User user)
-        {
-            CurrentUser = user;
-        }
+        public void SignIn(User user) => CurrentUser = user;
 
-        public void SignOut()
-        {
-            CurrentUser = null;
-        }
+        public void SignOut() => CurrentUser = null;
     }
 }

@@ -121,26 +121,6 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto" MinWidth="274"/>
                     </Grid.ColumnDefinitions>
-
-                    <TextBlock
-                        FontSize="17"
-                        Foreground="White"
-                        Text="Sort by: "
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="8,0"/>
-
-                    <ComboBox 
-                        Style="{DynamicResource FlatComboBoxStyle1}"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        SelectedIndex="0"
-                        IsDropDownOpen="True" SelectionChanged="ComboBox_SelectionChanged">
-                        <ComboBoxItem Content="Recent"/>
-                        <ComboBoxItem Content="Alphabetical"/>
-
-                    </ComboBox>
                 </Grid>
             </Grid>
         </Grid>

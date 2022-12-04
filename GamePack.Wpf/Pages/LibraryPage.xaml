@@ -9,6 +9,24 @@
       Title="LibraryPage">
 
     <Grid Background="DarkGoldenrod">
+        <TextBlock
+            FontSize="17"
+            Foreground="White"
+            Text="Sort by: "
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="30,15"/>
+        <ComboBox 
+            Style="{DynamicResource FlatComboBoxStyle1}"
+            Margin="100,10"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            SelectedIndex="0"
+            IsDropDownOpen="True" SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBoxItem Content="Recent"/>
+            <ComboBoxItem Content="Alphabetical"/>
+        </ComboBox>
+        
         <Button Height="20" Width="100" Click="AddGame_OnClick">
             Add game
         </Button>

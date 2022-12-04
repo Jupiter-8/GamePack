@@ -12,6 +12,7 @@ namespace GamePack.Wpf.HostExtensions
             host.ConfigureServices((context, services) =>
             {
                 services.AddTransient<IUserService, UserService>();
+                services.AddTransient<IGameService, GameService>();
             });
 
             return host;

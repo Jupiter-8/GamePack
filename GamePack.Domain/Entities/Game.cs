@@ -9,25 +9,25 @@
         /// Initializes a new instance of the <see cref="Game"/> class.
         /// </summary>
         /// <param name="title">Game title.</param>
-        /// <param name="dateAdded">Time when game has been added to the library.</param>
         /// <param name="lastRun">Last time of launch of the game.</param>
         /// <param name="iconPath">Path to the icon of the game.</param>
         /// <param name="exePath">Path to the exe file of the game.</param>
         /// <param name="categoryId">Category id.</param>
+        /// <param name="userId">User id.</param>
         public Game(
             string title,
-            DateTime dateAdded,
-            DateTime lastRun,
             string iconPath,
             string exePath,
-            int categoryId) : base()
+            int categoryId,
+            int userId) : base()
         {
             Title = title;
-            DateAdded = dateAdded;
-            LastRun = lastRun;
+            DateAdded = DateTime.UtcNow;
+            LastRun = null;
             IconPath = iconPath;
             ExePath = exePath;
             CategoryId = categoryId;
+            UserId = userId;
         }
 
         /// <summary>
@@ -43,7 +43,7 @@
         /// <summary>
         /// Last time of launch of the game.
         /// </summary>
-        public DateTime LastRun { get; set; }
+        public DateTime? LastRun { get; set; }
 
         /// <summary>
         /// Path to the icon of the game.
@@ -64,5 +64,15 @@
         /// Get or sets category.
         /// </summary>
         public Category Category { get; set; }
+
+        /// <summary>
+        /// Gets or sets user id.
+        /// </summary>
+        public int UserId { get; set; }
+
+        /// <summary>
+        /// Gets or sets user.
+        /// </summary>
+        public User User { get; set; }
     }
 }

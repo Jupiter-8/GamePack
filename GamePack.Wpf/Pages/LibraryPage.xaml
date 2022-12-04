@@ -9,6 +9,8 @@
       Title="LibraryPage">
 
     <Grid Background="DarkGoldenrod">
-
+        <Button Height="20" Width="100" Click="AddGame_OnClick">
+            Add game
+        </Button>
     </Grid>
 </Page>

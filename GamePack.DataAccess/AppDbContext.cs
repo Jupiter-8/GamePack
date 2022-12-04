@@ -49,6 +49,11 @@ namespace GamePack.DataAccess
 
             modelBuilder.Entity<User>()
                 .HasKey(g => g.Id);
+
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Games)
+                .WithOne(g => g.User)
+                .HasForeignKey(g => g.UserId);
         }
     }
 }

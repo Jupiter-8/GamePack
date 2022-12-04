@@ -1,0 +1,126 @@
+﻿<Page x:Class="GamePack.Wpf.Pages.AddGamePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GamePack.Wpf.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddGamePage">
+
+    <Grid>
+        <Border
+            MinHeight="450"
+            MinWidth="800"
+            Background="{StaticResource SearchBackgroundBrush}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <Grid>
+                <TextBlock
+                    Text="ADD NEW GAME TO YOUR LIBRARY"
+                    FontFamily="Brutal Type"
+                    FontWeight="Bold"
+                    FontSize="12"
+                    Foreground="{StaticResource CaptionFontBrush}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Margin="0, 20, 0 ,0"/>
+
+                <StackPanel
+                    Margin="0, 50, 0, 0"
+                >
+                    <TextBlock
+                        Foreground="{StaticResource CaptionFontBrush}" 
+                        FontFamily="Brutal Type"
+                        FontSize="14"
+                        HorizontalAlignment="Left"
+                        Margin="230, 10, 0, 0"
+                        LineHeight="10">
+                        Title
+                    </TextBlock>
+                    <TextBox
+                        Foreground="White"
+                        Background="DimGray"
+                        CaretBrush="White"
+                        Cursor="Arrow"
+                        HorizontalAlignment="Left"
+                        FontFamily="Brutal Type"
+                        Margin="230, 7, 0, 20"
+                        Height="30"
+                        Width="350"
+                        FontSize="17"
+                        Text="{Binding Path=GameTitle, Mode=TwoWay}"
+                    >
+                    </TextBox>
+                    <TextBlock
+                        Foreground="{StaticResource CaptionFontBrush}" 
+                        FontFamily="Brutal Type"
+                        FontSize="14"
+                        HorizontalAlignment="Left"
+                        Margin="230, 10, 0, 0"
+                        LineHeight="10">
+                        Exe path
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox
+                            Foreground="White"
+                            Background="DimGray"
+                            CaretBrush="White"
+                            Cursor="Arrow"
+                            FontFamily="Brutal Type"
+                            Margin="230, 10, 0, 0"
+                            Height="30"
+                            Width="270"
+                            FontSize="17"
+                            HorizontalAlignment="Left"
+                            Text="{Binding ExePath, Mode=TwoWay}"
+                            />
+                        <Button
+                            Height="30"
+                            Margin="15, 10, 0, 0"
+                            Click="SelectExePath_OnClick"
+                         >
+                            Select path
+                        </Button>
+                    </StackPanel>
+
+                    <Button
+                        Height="30"
+                        Width="150"
+                        Margin="0, 50, 0, 0"
+                        Click="ConfirmAddGame_OnClick"
+                        >
+                        Confirm
+                    </Button>
+                    
+                    <TextBlock
+                        Foreground="Red"
+                        FontFamily="Brutal Type"
+                        FontSize="14"
+                        TextAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Margin="0,12"
+                        LineHeight="20"
+                        Text="{Binding Path=ErrorMessage}">
+                    </TextBlock>
+                    <TextBlock
+                        Foreground="{StaticResource DisabledFontBrush}"
+                        FontFamily="Brutal Type"
+                        FontSize="14"
+                        TextAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Margin="0,50"
+                        LineHeight="20">
+                        <Hyperlink Foreground="{StaticResource CaptionFontBrush}" 
+                                   FontWeight="Bold"
+                                   TextDecorations="None"
+                                   Click="BackToLibraryPage_Click"
+                                   >
+                            Back to the Library page
+                        </Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

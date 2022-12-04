@@ -155,13 +155,11 @@ namespace GamePack.Wpf.Pages
             if (CheckIsDataValid())
             {
                 _gameService.AddGame(_gameTitle, _exePath, _selectedCategory.Id, _userStore.CurrentUser.Id);
+                NavigateToLibraryPage();
             }
         }
 
-        private void BackToLibraryPage_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Application.Current.MainWindow).SubFrame.Navigate(_libraryPageFactory.Create());
-        }
+        private void BackToLibraryPage_Click(object sender, RoutedEventArgs e) => NavigateToLibraryPage();
 
         private bool CheckIsDataValid()
         {
@@ -180,9 +178,7 @@ namespace GamePack.Wpf.Pages
             return true;
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-        }
+        private void NavigateToLibraryPage()
+            => ((MainWindow)Application.Current.MainWindow).SubFrame.Navigate(_libraryPageFactory.Create());
     }
 }

@@ -19,5 +19,7 @@ namespace GamePack.Services.Implementations
 
             return game;
         }
+
+        public List<Game> GetGamesForUser(int userId) => _dbContext.Games.Where(x => x.UserId == userId).ToList();
     }
 }

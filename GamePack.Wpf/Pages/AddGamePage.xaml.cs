@@ -1,7 +1,9 @@
-﻿using GamePack.Services.Interfaces;
+﻿using GamePack.Domain.Entities;
+using GamePack.Services.Interfaces;
 using GamePack.Wpf.Factories;
 using GamePack.Wpf.Stores;
 using Microsoft.Win32;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -17,17 +19,36 @@ namespace GamePack.Wpf.Pages
         private readonly IAbstractFactory<LibraryPage> _libraryPageFactory;
         private readonly UserStore _userStore;
         private readonly IGameService _gameService;
+        private readonly ICategoryService _categoryService;
 
         public AddGamePage(
             IAbstractFactory<LibraryPage> libraryPageFactory,
             UserStore userStore,
-            IGameService gameService)
+            IGameService gameService,
+            ICategoryService categoryService)
         {
             DataContext = this;
             InitializeComponent();
             _libraryPageFactory = libraryPageFactory;
             _userStore = userStore;
             _gameService = gameService;
+            _categoryService = categoryService;
+
+            Categories = _categoryService.GetCategories();
+        }
+
+        private List<Category> _categories;
+        public List<Category> Categories
+        {
+            get { return _categories; }
+            set
+            {
+                if (_categories != value)
+                {
+                    _categories = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
         private string _gameTitle;
@@ -55,6 +76,21 @@ namespace GamePack.Wpf.Pages
                 {
                     _exePath = value;
                     IsDataValid = !string.IsNullOrEmpty(value);
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        private Category _selectedCategory;
+        public Category SelectedCategory
+        {
+            get { return _selectedCategory; }
+            set
+            {
+                if (_selectedCategory != value)
+                {
+                    _selectedCategory = value;
+                    IsDataValid = value != null;
                     OnPropertyChanged();
                 }
             }
@@ -118,7 +154,7 @@ namespace GamePack.Wpf.Pages
         {
             if (CheckIsDataValid())
             {
-                _gameService.AddGame(_gameTitle, _exePath, 1, _userStore.CurrentUser.Id);
+                _gameService.AddGame(_gameTitle, _exePath, _selectedCategory.Id, _userStore.CurrentUser.Id);
             }
         }
 
@@ -129,9 +165,9 @@ namespace GamePack.Wpf.Pages
 
         private bool CheckIsDataValid()
         {
-            if (string.IsNullOrEmpty(_gameTitle) || string.IsNullOrEmpty(_exePath))
+            if (string.IsNullOrEmpty(_gameTitle) || string.IsNullOrEmpty(_exePath) || _selectedCategory == null)
             {
-                ErrorMessage = "You must provide game title and exe path.";
+                ErrorMessage = "You must provide game title, its exe path and category.";
                 return false;
             }
             else if (!_exePath.EndsWith(".exe"))
@@ -142,6 +178,11 @@ namespace GamePack.Wpf.Pages
 
             ErrorMessage = string.Empty;
             return true;
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }

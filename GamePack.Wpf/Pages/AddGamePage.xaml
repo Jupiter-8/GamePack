@@ -84,6 +84,29 @@
                         </Button>
                     </StackPanel>
 
+                    <TextBlock
+                        Foreground="{StaticResource CaptionFontBrush}" 
+                        FontFamily="Brutal Type"
+                        FontSize="14"
+                        HorizontalAlignment="Left"
+                        Margin="230, 30, 0, 0"
+                        LineHeight="10">
+                        Category
+                    </TextBlock>
+                    <ComboBox
+                        Margin="10, 7, 0, 20"
+                        Height="30"
+                        Width="350"
+                        FontSize="17"
+                        ItemsSource="{Binding Categories}"
+                        SelectedItem="{Binding SelectedCategory}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    
                     <Button
                         Height="30"
                         Width="150"

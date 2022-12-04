@@ -13,6 +13,7 @@ namespace GamePack.Wpf.HostExtensions
             {
                 services.AddTransient<IUserService, UserService>();
                 services.AddTransient<IGameService, GameService>();
+                services.AddTransient<ICategoryService, CategoryService>();
             });
 
             return host;

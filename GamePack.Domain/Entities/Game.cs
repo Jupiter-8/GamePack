@@ -16,7 +16,7 @@
         /// <param name="userId">User id.</param>
         public Game(
             string title,
-            string iconPath,
+            string base64Icon,
             string exePath,
             int categoryId,
             int userId) : base()
@@ -24,7 +24,7 @@
             Title = title;
             DateAdded = DateTime.UtcNow;
             LastRun = null;
-            IconPath = iconPath;
+            Base64Icon = base64Icon;
             ExePath = exePath;
             CategoryId = categoryId;
             UserId = userId;
@@ -46,9 +46,9 @@
         public DateTime? LastRun { get; set; }
 
         /// <summary>
-        /// Path to the icon of the game.
+        /// Game icon in base 64 string format.
         /// </summary>
-        public string IconPath { get; set; }
+        public string Base64Icon { get; set; }
 
         /// <summary>
         /// Path to the exe file of the game.

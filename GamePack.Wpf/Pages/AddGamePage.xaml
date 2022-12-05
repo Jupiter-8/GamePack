@@ -4,10 +4,14 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GamePack.Wpf.Pages"
+      xmlns:converters="clr-namespace:GamePack.Wpf.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AddGamePage">
 
+    <Page.Resources>
+        <converters:Base64ImageConverter x:Key="Base64ImageConverter"/>
+    </Page.Resources>
     <Grid>
         <Border
             MinHeight="450"
@@ -16,6 +20,10 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
             <Grid>
+                <Image
+                    Width="32"
+                    Height="32"
+                    Source="{Binding Base64GameIcon, Converter={StaticResource Base64ImageConverter}}" Margin="619,80,149,338"/>
                 <TextBlock
                     Text="ADD NEW GAME TO YOUR LIBRARY"
                     FontFamily="Brutal Type"

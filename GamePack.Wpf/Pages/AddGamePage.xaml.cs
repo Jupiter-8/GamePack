@@ -3,8 +3,12 @@ using GamePack.Services.Interfaces;
 using GamePack.Wpf.Factories;
 using GamePack.Wpf.Stores;
 using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -124,6 +128,20 @@ namespace GamePack.Wpf.Pages
             }
         }
 
+        private string _base64GameIcon;
+        public string Base64GameIcon
+        {
+            get { return _base64GameIcon; }
+            set
+            {
+                if (_base64GameIcon != value)
+                {
+                    _base64GameIcon = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
@@ -142,6 +160,12 @@ namespace GamePack.Wpf.Pages
                     ExePath = exePath;
                     GameTitle = openFileDialog.SafeFileName[..3];
                     ErrorMessage = string.Empty;
+
+                    var gameIcon = Icon.ExtractAssociatedIcon(exePath);
+                    if(gameIcon != null)
+                    {
+                        Base64GameIcon = ConvertIconToBase64String(gameIcon);
+                    }
                 }
                 else
                 {
@@ -154,7 +178,7 @@ namespace GamePack.Wpf.Pages
         {
             if (CheckIsDataValid())
             {
-                _gameService.AddGame(_gameTitle, _exePath, _selectedCategory.Id, _userStore.CurrentUser.Id);
+                _gameService.AddGame(_gameTitle, _exePath, _base64GameIcon, _selectedCategory.Id, _userStore.CurrentUser.Id);
                 NavigateToLibraryPage();
             }
         }
@@ -180,5 +204,17 @@ namespace GamePack.Wpf.Pages
 
         private void NavigateToLibraryPage()
             => ((MainWindow)Application.Current.MainWindow).SubFrame.Navigate(_libraryPageFactory.Create());
+
+        private string ConvertIconToBase64String(Icon icon)
+        {
+            var iconBitMap = icon.ToBitmap();
+            using (var memoryStream = new MemoryStream())
+            {
+                iconBitMap.Save(memoryStream, ImageFormat.Jpeg);
+                var bytes = memoryStream.ToArray();
+
+                return Convert.ToBase64String(bytes);
+            }
+        }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using GamePack.DataAccess;
 using GamePack.Domain.Entities;
 using GamePack.Services.Interfaces;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace GamePack.Services.Implementations
 {
@@ -11,9 +13,9 @@ namespace GamePack.Services.Implementations
         public GameService(AppDbContext dbContext)
             => _dbContext = dbContext;
 
-        public Game AddGame(string title, string exePath, int categoryId, int userId)
+        public Game AddGame(string title, string exePath, string base64Icon, int categoryId, int userId)
         {
-            var game = new Game(title, "IconPath", exePath, categoryId, userId);
+            var game = new Game(title, base64Icon, exePath, categoryId, userId);
             _dbContext.Games.Add(game);
             _dbContext.SaveChanges();
 

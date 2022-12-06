@@ -85,7 +85,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="Auto"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Title}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

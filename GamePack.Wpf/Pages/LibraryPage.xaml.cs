@@ -3,6 +3,8 @@ using GamePack.Services.Interfaces;
 using GamePack.Wpf.Factories;
 using GamePack.Wpf.Stores;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -22,19 +24,12 @@ namespace GamePack.Wpf.Pages
             IGameService gameService,
             UserStore userStore)
         {
-            InitializeComponent();
+            DataContext = this;
             _addGamePageFactory = addGamePageFactory;
             _gameService = gameService;
             _userStore = userStore;
-
             Games = _gameService.GetGamesForUser(_userStore.CurrentUser.Id);
-
-
-            System.Console.WriteLine("Games: " + Games.Count);
-            foreach (var game in Games)
-            {
-                System.Console.WriteLine(game.Title);
-            }
+            InitializeComponent();
         }
 
         private List<Game> _games;

@@ -28,6 +28,13 @@ namespace GamePack.Wpf.Pages
             _userStore = userStore;
 
             Games = _gameService.GetGamesForUser(_userStore.CurrentUser.Id);
+
+
+            System.Console.WriteLine("Games: " + Games.Count);
+            foreach (var game in Games)
+            {
+                System.Console.WriteLine(game.Title);
+            }
         }
 
         private List<Game> _games;

@@ -135,24 +135,5 @@
                 </StackPanel>
             </Grid>
         </Border>
-        <Button
-            Content="{StaticResource SettingsIcon}"
-            FontSize="14"
-            HorizontalAlignment="Left"
-            Margin="39, 0, 0, 35"
-            VerticalAlignment="Bottom"
-            Click="Button_OnClick">
-            <Button.Style>
-                <Style
-                    TargetType="{x:Type Button}"
-                    BasedOn="{StaticResource IconOnlyButtonStyle}">
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{StaticResource SettingsIconHoverBrush}"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-        </Button>
     </Grid>
 </Page>

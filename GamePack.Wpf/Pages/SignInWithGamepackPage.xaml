@@ -54,7 +54,7 @@
                         Margin="0, 7, 0, 20"
                         Height="30"
                         Width="350"
-                        FontSize="17"
+                        FontSize="22"
                         Text="{Binding Path=Username, Mode=TwoWay}"
                     >
                     </TextBox>
@@ -71,17 +71,15 @@
                         Margin="0, 7, 0, 20"
                         Height="30"
                         Width="350"
-                        FontSize="17"
+                        FontSize="22"
                         Password="{Binding Password}" />
-                    <attachedProperties:LoginServiceButtons
-                        Content="SIGN IN"
-                        IconHeight="25"
-                        IconWidth="22"
-                        Icon="{StaticResource logo_no_bg}"
-                        IconBackground="{StaticResource GamePackBackBrush}"
-                        IconBackgroundHover="{StaticResource GamePackBackHoverBrush}"
-                        IconFill="{StaticResource SignInIconsBackBrush}"
-                        Click="SignIn_Click" />
+                    <Button
+                        Style="{DynamicResource DefaultAppButton}"
+                        Height="30"
+                        Width="150"
+                        Content="Sign In"
+                        Click="SignIn_Click" 
+                    />
 
                     <TextBlock
                         Foreground="{StaticResource DisabledFontBrush}"

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:GamePack.Wpf.Pages"
       xmlns:converters="clr-namespace:GamePack.Wpf.Converters"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="800"
       Title="AddGamePage">
 
     <Page.Resources>
@@ -14,16 +14,13 @@
     </Page.Resources>
     <Grid>
         <Border
-            MinHeight="450"
+            MinHeight="600"
             MinWidth="800"
             Background="{StaticResource SearchBackgroundBrush}"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
             <Grid>
-                <Image
-                    Width="32"
-                    Height="32"
-                    Source="{Binding Base64GameIcon, Converter={StaticResource Base64ImageConverter}}" Margin="619,80,149,338"/>
+                
                 <TextBlock
                     Text="ADD NEW GAME TO YOUR LIBRARY"
                     FontFamily="Brutal Type"
@@ -56,8 +53,8 @@
                         Margin="230, 7, 0, 20"
                         Height="30"
                         Width="350"
-                        FontSize="17"
-                        Text="{Binding Path=GameTitle, Mode=TwoWay}"
+                        FontSize="21"
+                        Text="{Binding Path=GameTitle, Mode=TwoWay}" TextChanged="TextBox_TextChanged"
                     >
                     </TextBox>
                     <TextBlock
@@ -69,7 +66,7 @@
                         LineHeight="10">
                         Exe path
                     </TextBlock>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
                         <TextBox
                             Foreground="White"
                             Background="DimGray"
@@ -78,20 +75,38 @@
                             FontFamily="Brutal Type"
                             Margin="230, 10, 0, 0"
                             Height="30"
-                            Width="270"
-                            FontSize="17"
+                            Width="350"
+                            FontSize="21"
                             HorizontalAlignment="Left"
+                            IsEnabled="False"
                             Text="{Binding ExePath, Mode=TwoWay}"
-                            />
+                         />
                         <Button
+                            Style="{DynamicResource DefaultAppButton}"
                             Height="30"
-                            Margin="15, 10, 0, 0"
+                            Width="100"
+                            Margin="0, 20, 0, 0"
                             Click="SelectExePath_OnClick"
-                         >
-                            Select path
-                        </Button>
+                            Content="Select path"
+                         />
                     </StackPanel>
-
+                    <StackPanel>
+                        <TextBlock
+                            Foreground="{StaticResource CaptionFontBrush}" 
+                            FontFamily="Brutal Type"
+                            FontSize="14"
+                            HorizontalAlignment="Left"
+                            LineHeight="10"
+                            Margin="230, 30, 0, 0">
+                            Icon
+                        </TextBlock>
+                        <Image
+                            Margin="230, 5, 0, 0"
+                            Width="32"
+                            Height="32"
+                            HorizontalAlignment="Left"
+                            Source="{Binding Base64GameIcon, Converter={StaticResource Base64ImageConverter}}"/>
+                    </StackPanel>
                     <TextBlock
                         Foreground="{StaticResource CaptionFontBrush}" 
                         FontFamily="Brutal Type"
@@ -102,28 +117,36 @@
                         Category
                     </TextBlock>
                     <ComboBox
+                        Style="{x:Null}"
                         Margin="10, 7, 0, 20"
                         Height="30"
                         Width="350"
-                        FontSize="17"
+                        FontSize="21"
                         ItemsSource="{Binding Categories}"
                         SelectedItem="{Binding SelectedCategory}">
+                        <ComboBox.ItemContainerStyle>
+                            <Style TargetType="ComboBoxItem">
+                                <Setter Property="Background" Value="DimGray"/>
+                                <Setter Property="BorderBrush" Value="DimGray"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Style>
+                        </ComboBox.ItemContainerStyle>
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Name}" />
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                    
+
                     <Button
-                        Height="30"
-                        Width="150"
-                        Margin="0, 50, 0, 0"
+                        Style="{DynamicResource DefaultAppButton}"
+                        Margin="0, 20, 0, 0"
                         Click="ConfirmAddGame_OnClick"
-                        >
-                        Confirm
-                    </Button>
-                    
+                        Content="Confirm"
+                        Height="30"
+                        Width="170"
+                     />
+
                     <TextBlock
                         Foreground="Red"
                         FontFamily="Brutal Type"
@@ -140,7 +163,7 @@
                         FontSize="14"
                         TextAlignment="Center"
                         HorizontalAlignment="Center"
-                        Margin="0,50"
+                        Margin="0,20"
                         LineHeight="20">
                         <Hyperlink Foreground="{StaticResource CaptionFontBrush}" 
                                    FontWeight="Bold"

@@ -216,5 +216,10 @@ namespace GamePack.Wpf.Pages
                 return Convert.ToBase64String(bytes);
             }
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

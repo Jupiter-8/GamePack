@@ -37,10 +37,14 @@
             <ComboBoxItem Content="Alphabetical"/>
         </ComboBox>
 
-        <Button Height="20" Width="100" Click="AddGame_OnClick">
-            Add game
-        </Button>
-
+        <Button 
+            Style="{DynamicResource DefaultAppButton}"
+            Height="30" 
+            Width="100" 
+            Click="AddGame_OnClick"
+            Content="Add game"
+            HorizontalAlignment="Center"
+         />
 
         <!--<ListBox ItemsSource="{Binding Games}" Margin="30,50">
             <ListBox.ItemTemplate>

@@ -91,6 +91,51 @@
         </Setter>
     </Style>
 
+    <Style TargetType="{x:Type Button}" x:Key="DefaultAppButton">
+        <Setter Property="Background" Value="{StaticResource SignInBackgroundBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{StaticResource IconActiveBrush}"/>
+        <Setter Property="FontFamily" Value="Brutal Type"/>
+        <Setter Property="FontWeight" Value="ExtraBold"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Margin" Value="0, 0, 0, 0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="3">
+                        <Grid>
+                            <ContentPresenter
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition 
+                                    Property="IsMouseOver"
+                                    Value="True"/>
+                                <Condition
+                                    Property="IsMouseCaptured"
+                                    Value="False" />
+                            </MultiTrigger.Conditions>
+
+                            <Setter Property="Background"
+                                    Value="{StaticResource SignInBackgroundMouseOverBrush}"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style TargetType="{x:Type Button}"
            x:Key="IconOnlyButtonStyle">
         <Setter Property="Background" Value="Transparent" />

@@ -1,5 +1,4 @@
 ﻿using GamePack.Wpf.Factories;
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -39,14 +38,6 @@ namespace GamePack.Wpf.Pages
             if (Application.Current.MainWindow != null)
             {
                 NavigationService.Navigate(_preparingToLaunchStorePageFactory.Create());
-            }
-        }
-
-        private void Button_OnClick(object sender, RoutedEventArgs e)
-        {
-            if (Application.Current.MainWindow != null)
-            {
-                ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(new Uri("../Pages/SettingsPage.xaml", UriKind.RelativeOrAbsolute));
             }
         }
 

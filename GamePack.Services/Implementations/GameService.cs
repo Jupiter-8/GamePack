@@ -1,8 +1,6 @@
 ﻿using GamePack.DataAccess;
 using GamePack.Domain.Entities;
 using GamePack.Services.Interfaces;
-using System.Drawing;
-using System.Drawing.Imaging;
 
 namespace GamePack.Services.Implementations
 {
@@ -20,6 +18,12 @@ namespace GamePack.Services.Implementations
             _dbContext.SaveChanges();
 
             return game;
+        }
+
+        public void UpdateGame(Game game)
+        {
+            _dbContext.Games.Update(game);
+            _dbContext.SaveChanges();
         }
 
         public List<Game> GetGamesForUser(int userId) => _dbContext.Games.Where(x => x.UserId == userId).ToList();

@@ -8,6 +8,22 @@
       d:DesignHeight="450" d:DesignWidth="600"
       Title="HomePage">
 
-    <Grid Background="Red">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock 
+            Grid.Row="0"
+            Foreground="White"
+            FontSize="25"
+            Margin="20,20,0,0"
+            FontFamily="Brutal Type">
+            Hello <TextBlock x:Name="userNameTxtBlock"/>, maybe play some game?
+        </TextBlock>
     </Grid>
 </Page>

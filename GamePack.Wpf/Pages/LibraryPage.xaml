@@ -59,6 +59,7 @@
 
         <DataGrid
             ItemsSource="{Binding Games}"
+            SelectedItem="{Binding SelectedGame}"
             AutoGenerateColumns="False"
             CanUserAddRows="False"
             CanUserDeleteRows="False"
@@ -84,11 +85,20 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Base64Icon, Converter={StaticResource Base64ImageConverter}}" Width="50" Height="50"/>
+                            <Image Source="{Binding Base64Icon, Converter={StaticResource Base64ImageConverter}}" Width="32" Height="32"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Name" Binding="{Binding Title}" Width="*"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button 
+                                Content="Play"
+                                Click="PlayGame_OnClick"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

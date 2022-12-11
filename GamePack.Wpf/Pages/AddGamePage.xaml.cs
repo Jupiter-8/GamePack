@@ -158,7 +158,7 @@ namespace GamePack.Wpf.Pages
                 if (exePath.EndsWith(".exe"))
                 {
                     ExePath = exePath;
-                    GameTitle = openFileDialog.SafeFileName[..3];
+                    GameTitle = openFileDialog.SafeFileName[0..openFileDialog.SafeFileName.IndexOf(".")];
                     ErrorMessage = string.Empty;
 
                     var gameIcon = Icon.ExtractAssociatedIcon(exePath);

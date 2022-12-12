@@ -76,8 +76,16 @@ namespace GamePack.Wpf.Pages
                 return;
             }
 
+            var existingProcesses = Process.GetProcessesByName(_selectedGame.ProcessName);
+            if (existingProcesses.Length != 0)
+            {
+                MessageBox.Show($"Game {_selectedGame.Title} already runs!");
+                return;
+            }
+
             var process = Process.Start(_selectedGame.ExePath);
             _selectedGame.LastRun = DateTime.UtcNow;
+            _selectedGame.ProcessName = process.ProcessName;
             _gameService.UpdateGame(_selectedGame);
         }
     }

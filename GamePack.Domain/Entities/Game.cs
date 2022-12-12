@@ -74,5 +74,10 @@
         /// Gets or sets user.
         /// </summary>
         public User User { get; set; }
+
+        /// <summary>
+        /// Gets or sets process name.
+        /// </summary>
+        public string? ProcessName { get; set; }
     }
 }

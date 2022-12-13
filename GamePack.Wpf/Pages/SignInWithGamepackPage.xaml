@@ -81,31 +81,48 @@
                         Click="SignIn_Click" 
                     />
 
-                    <TextBlock
-                        Foreground="{StaticResource DisabledFontBrush}"
-                        FontFamily="Brutal Type"
-                        FontSize="14"
-                        TextAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Margin="0,12"
-                        LineHeight="20">
-                        <Hyperlink Foreground="{StaticResource CaptionFontBrush}" 
-                                   FontWeight="Bold"
-                                   TextDecorations="None"
-                                   Click="BackToSignInPage_Click"
-                                   >
-                            Back to the Sign In Menu
-                        </Hyperlink>
-                    </TextBlock>
+                    
                     <TextBlock
                         Foreground="Red"
                         FontFamily="Brutal Type"
                         FontSize="14"
                         TextAlignment="Center"
                         HorizontalAlignment="Center"
-                        Margin="0,12"
+                        Margin="0,20,0,0"
                         LineHeight="20"
                         Text="{Binding Path=ErrorMessage}">
+                    </TextBlock>
+                    <TextBlock
+                        Foreground="{StaticResource DisabledFontBrush}"
+                        FontFamily="Brutal Type"
+                        FontSize="14"
+                        TextAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Margin="0,30,0,0"
+                        LineHeight="20">
+                        <Hyperlink Foreground="{StaticResource CaptionFontBrush}" 
+                                   FontWeight="Bold"
+                                   TextDecorations="None"
+                                   Click="GoToSignUpPage_OnClick"
+                                   >
+                            Create a GAMEPACK account
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock
+                        Foreground="{StaticResource DisabledFontBrush}"
+                        FontFamily="Brutal Type"
+                        FontSize="14"
+                        TextAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Margin="0,10,0,0"
+                        LineHeight="20">
+                        <Hyperlink Foreground="{StaticResource CaptionFontBrush}" 
+                                   FontWeight="Bold"
+                                   TextDecorations="None"
+                                   Click="BackToSignInPage_OnClick"
+                                   >
+                            Back to the Sign In menu
+                        </Hyperlink>
                     </TextBlock>
                 </StackPanel>
             </Grid>

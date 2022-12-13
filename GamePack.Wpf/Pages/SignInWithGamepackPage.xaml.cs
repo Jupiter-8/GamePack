@@ -1,8 +1,6 @@
-﻿using GamePack.DataAccess;
-using GamePack.Services.Interfaces;
+﻿using GamePack.Services.Interfaces;
 using GamePack.Wpf.Factories;
 using GamePack.Wpf.Stores;
-using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -17,6 +15,7 @@ namespace GamePack.Wpf.Pages
     {
         private readonly IAbstractFactory<SignInPage> _signInPageFactory;
         private readonly IAbstractFactory<PreparingToLaunchStorePage> _preparingToLaunchStorePageFactory;
+        private readonly IAbstractFactory<SignUpPage> _signUpPageFactory;
         private readonly IUserService _userService;
         private readonly UserStore _userStore;
 
@@ -24,6 +23,7 @@ namespace GamePack.Wpf.Pages
             IUserService userService,
             IAbstractFactory<SignInPage> signInPageFactory,
             IAbstractFactory<PreparingToLaunchStorePage> preparingToLaunchStorePageFactory,
+            IAbstractFactory<SignUpPage> signUpPageFactory,
             UserStore userStore)
         {
             DataContext = this;
@@ -32,6 +32,7 @@ namespace GamePack.Wpf.Pages
             _signInPageFactory = signInPageFactory;
             _preparingToLaunchStorePageFactory = preparingToLaunchStorePageFactory;
             _userStore = userStore;
+            _signUpPageFactory = signUpPageFactory;
         }
 
         private string _username;
@@ -107,11 +108,19 @@ namespace GamePack.Wpf.Pages
             }
         }
 
-        private void BackToSignInPage_Click(object sender, RoutedEventArgs e)
+        private void BackToSignInPage_OnClick(object sender, RoutedEventArgs e)
         {
             if (Application.Current.MainWindow != null)
             {
                 NavigationService.Navigate(_signInPageFactory.Create());
+            }
+        }
+
+        private void GoToSignUpPage_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.MainWindow != null)
+            {
+                NavigationService.Navigate(_signUpPageFactory.Create());
             }
         }
     }

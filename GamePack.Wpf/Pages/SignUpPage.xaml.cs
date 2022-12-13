@@ -14,14 +14,19 @@ namespace GamePack.Wpf.Pages
     public partial class SignUpPage : Page, INotifyPropertyChanged
     {
         private readonly IAbstractFactory<SignInPage> _signInPageFactory;
+        private readonly IAbstractFactory<SignInWithGamepackPage> _signInWithGamePackPageFactory;
         private readonly IUserService _userService;
 
-        public SignUpPage(IAbstractFactory<SignInPage> signInPageFactory, IUserService userService)
+        public SignUpPage(
+            IAbstractFactory<SignInPage> signInPageFactory,
+            IAbstractFactory<SignInWithGamepackPage> signInWithGamePackPageFactory,
+            IUserService userService)
         {
             DataContext = this;
             InitializeComponent();
             _signInPageFactory = signInPageFactory;
             _userService = userService;
+            _signInWithGamePackPageFactory = signInWithGamePackPageFactory;
         }
 
         private string _username;
@@ -113,11 +118,19 @@ namespace GamePack.Wpf.Pages
             ErrorMessage = "User account has been created, now you can Sign In.";
         }
 
-        private void BackToSignInPage_Click(object sender, RoutedEventArgs e)
+        private void BackToSignInPage_OnClick(object sender, RoutedEventArgs e)
         {
             if (Application.Current.MainWindow != null)
             {
                 NavigationService.Navigate(_signInPageFactory.Create());
+            }
+        }
+
+        private void GoToSignInPage_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.MainWindow != null)
+            {
+                NavigationService.Navigate(_signInWithGamePackPageFactory.Create());
             }
         }
     }

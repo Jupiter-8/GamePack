@@ -1,6 +1,7 @@
 ﻿using GamePack.DataAccess;
 using GamePack.Domain.Entities;
 using GamePack.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace GamePack.Services.Implementations
 {
@@ -26,6 +27,16 @@ namespace GamePack.Services.Implementations
             _dbContext.SaveChanges();
         }
 
-        public List<Game> GetGamesForUser(int userId) => _dbContext.Games.Where(x => x.UserId == userId).ToList();
+        public void DeleteGame(Game game)
+        {
+            _dbContext.Remove(game);
+            _dbContext.SaveChanges();
+        }
+
+        public List<Game> GetGamesForUser(int userId) 
+            => _dbContext.Games
+                .Where(x => x.UserId == userId)
+                .Include(x => x.Category)
+                .ToList();
     }
 }

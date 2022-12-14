@@ -78,9 +78,10 @@
             MinWidth="500"
             MinHeight="100"
             Background="Transparent"
-            BorderBrush="DarkBlue"
+            BorderBrush="Transparent"
             BorderThickness="2"
-            HeadersVisibility="None" Grid.Row="1">
+            HeadersVisibility="None" Grid.Row="1"
+            Style="{DynamicResource GamesDataGridStyle}">
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
@@ -97,7 +98,8 @@
                         <DataTemplate>
                             <Button 
                                 Content="Play"
-                                Click="PlayGame_OnClick"/>
+                                Click="PlayGame_OnClick"
+                                Style="{DynamicResource PlayGameButtonStyle}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

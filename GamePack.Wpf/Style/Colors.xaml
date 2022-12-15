@@ -210,6 +210,49 @@
     <SolidColorBrush x:Key="SearchBackgroundBrush" Color="{StaticResource SearchBackgroundColor}"/>
     <!--#endregion-->
 
+    <Color x:Key="BorderLightColor">#E6E6E6</Color>
+    <SolidColorBrush x:Key="BorderLightBrush" Color="{StaticResource BorderLightColor}"/>
+
+    <Color x:Key="BorderDarkColor">#C8C8C8</Color>
+    <SolidColorBrush x:Key="BorderDarkBrush" Color="{StaticResource BorderDarkColor}"/>
+
+    <Color x:Key="ControlLightColor">#F0F0F0</Color>
+    <SolidColorBrush x:Key="ControlLightBrush" Color="{StaticResource ControlLightColor}"/>
+
+    <Color x:Key="ControlDarkColor">#D0D0D0</Color>
+    <SolidColorBrush x:Key="ControlDarkBrush" Color="{StaticResource ControlDarkColor}"/>
+
+    <Color x:Key="ControlMediumColor">#E0E0E0</Color>
+    <SolidColorBrush x:Key="ControlMediumBrush" Color="{StaticResource ControlMediumColor}"/>
+
+    <Color x:Key="ControlMouseOverColor">#E6E6</Color>
+    <SolidColorBrush x:Key="ControlMouseOverBrush" Color="{StaticResource ControlMouseOverColor}"/>
+
+    <Color x:Key="ControlPressedColor">#161</Color>
+    <SolidColorBrush x:Key="ControlPressedBrush" Color="{StaticResource ControlPressedColor}"/>
+
+    <Color x:Key="PressedBorderDarkColor">#A0A0A0</Color>
+    <SolidColorBrush x:Key="PressedBorderDarkBrush" Color="{StaticResource PressedBorderDarkColor}"/>
+
+
+    <Color x:Key="PressedBorderLightColor">#D0D0D0</Color>
+    <SolidColorBrush x:Key="PressedBorderLightBrush" Color="{StaticResource PressedBorderLightColor}"/>
+
+    <Color x:Key="DisabledControlDarkColor">#D0D0D0</Color>
+    <SolidColorBrush x:Key="DisabledControlDarkBrush" Color="{StaticResource DisabledControlDarkColor}"/>
+
+    <Color x:Key="DisabledForegroundColor">#A0A0A0</Color>
+    <SolidColorBrush x:Key="DisabledForegroundColorBrush" Color="{StaticResource DisabledForegroundColor}"/>
+
+    <Color x:Key="DisabledBorderDarkColor">#A0A0A0</Color>
+    <SolidColorBrush x:Key="DisabledBorderDarkBrush" Color="{StaticResource DisabledBorderDarkColor}"/>
+
+    <Color x:Key="DefaultBorderBrushLightBrush">#E6E6E6</Color>
+    <SolidColorBrush x:Key="DefaultBorderBrushLight" Color="{StaticResource DefaultBorderBrushLightBrush}"/>
+
+    <Color x:Key="DefaultBorderBrushDarkColor">#C8C8C8</Color>
+    <SolidColorBrush x:Key="DefaultBorderBrushDark" Color="{StaticResource DefaultBorderBrushDarkColor}"/>
+
     <!--#region ComboBox Brushes-->
     <SolidColorBrush x:Key="ComboBox.Static.Background" Color="Transparent"/>
 
@@ -283,4 +326,6 @@
 
     <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHoverFocus.Border" Color="#5C5C5C"/>
     <!--#endregion-->
+    
+    
 </ResourceDictionary>

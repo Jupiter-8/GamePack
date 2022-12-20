@@ -80,8 +80,7 @@
             Background="Transparent"
             BorderBrush="Transparent"
             BorderThickness="2"
-            HeadersVisibility="None" Grid.Row="1"
-            Style="{DynamicResource GamesDataGridStyle}">
+            HeadersVisibility="Column" Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
@@ -91,7 +90,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Name"  Binding="{Binding Title}" Width="*"/>
-                <DataGridTextColumn Header="LastRun" Binding="{Binding LastRun}" Width="*"/>
+                <DataGridTextColumn Header="Last Played" Binding="{Binding LastRun}" Width="*"/>
                 <DataGridTextColumn Header="Category"  Binding="{Binding Category.Name}" Width="*"/>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>

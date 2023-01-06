@@ -12,14 +12,14 @@ namespace GamePack.Wpf.Pages
     {
         private readonly IAbstractFactory<HomePage> _homePageFactory;
         private readonly IAbstractFactory<LibraryPage> _libraryPageFactory;
-        private readonly IAbstractFactory<ProfilePage> _profilePageFactory;
+        private readonly IAbstractFactory<AccountPage> _accountPageFactory;
         private readonly IAbstractFactory<SettingsPage> _settingsPageFactory;
         private readonly IAbstractFactory<SignInPage> _signInPageFactory;
         private readonly UserStore _userStore;
 
         public MainPage(
             IAbstractFactory<HomePage> homePageFactory,
-            IAbstractFactory<ProfilePage> profilePageFactory,
+            IAbstractFactory<AccountPage> accountPageFactory,
             IAbstractFactory<SettingsPage> settingsPageFactory,
             IAbstractFactory<LibraryPage> libraryPageFactory,
             IAbstractFactory<SignInPage> signInPageFactory,
@@ -27,7 +27,7 @@ namespace GamePack.Wpf.Pages
         {
             InitializeComponent();
             _homePageFactory = homePageFactory;
-            _profilePageFactory = profilePageFactory;
+            _accountPageFactory = accountPageFactory;
             _settingsPageFactory = settingsPageFactory;
             _libraryPageFactory = libraryPageFactory;
             _signInPageFactory = signInPageFactory;
@@ -51,11 +51,11 @@ namespace GamePack.Wpf.Pages
             }
         }
 
-        private void ProfilePage_OnClick(object sender, RoutedEventArgs e)
+        private void AccountPage_OnClick(object sender, RoutedEventArgs e)
         {
             if (Application.Current.MainWindow != null)
             {
-                ((MainWindow)Application.Current.MainWindow).SubFrame.Navigate(_profilePageFactory.Create());
+                ((MainWindow)Application.Current.MainWindow).SubFrame.Navigate(_accountPageFactory.Create());
             }
         }
 
@@ -65,11 +65,6 @@ namespace GamePack.Wpf.Pages
             {
                 ((MainWindow)Application.Current.MainWindow).SubFrame.Navigate(_settingsPageFactory.Create());
             }
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
 
         private void SignOut_OnClick(object sender, RoutedEventArgs e)

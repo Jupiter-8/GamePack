@@ -12,13 +12,13 @@ namespace GamePack.Wpf.Pages
     /// <summary>
     /// Interaction logic for ProfilePage.xaml
     /// </summary>
-    public partial class ProfilePage : Page
+    public partial class AccountPage : Page
     {
         private readonly UserStore _userStore;
         private readonly IUserService _userService;
         private readonly IAbstractFactory<SignInPage> _signInPageFactory;
 
-        public ProfilePage(
+        public AccountPage(
             UserStore userStore,
             IUserService userService,
             IAbstractFactory<SignInPage> signInPageFactory)

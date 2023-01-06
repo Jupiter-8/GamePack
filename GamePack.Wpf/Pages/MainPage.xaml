@@ -76,10 +76,10 @@
                                 Click="LibraryPage_OnClick"/>
 
                             <attachedProperties:CheckableMenuButton
-                                Content="Profile"
-                                Icon="{StaticResource ProfileIcon}"
+                                Content="Account"
+                                Icon="{StaticResource AccountIcon}"
                                 Style="{StaticResource  SideNavigationCheckableMenuButtonsStyle}"
-                                Click="ProfilePage_OnClick"/>
+                                Click="AccountPage_OnClick"/>
                             <attachedProperties:CheckableMenuButton
                                 Content="Logout"
                                 Icon="{StaticResource SignOutIcon}"

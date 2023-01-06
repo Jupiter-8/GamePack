@@ -34,7 +34,7 @@ namespace GamePack.Wpf
                 .AddTypeFactory<PreparingToLaunchStorePage>()
                 .AddTypeFactory<SignUpPage>()
                 .AddTypeFactory<HomePage>()
-                .AddTypeFactory<ProfilePage>()
+                .AddTypeFactory<AccountPage>()
                 .AddTypeFactory<MainPage>()
                 .AddTypeFactory<SettingsPage>()
                 .AddTypeFactory<LibraryPage>()

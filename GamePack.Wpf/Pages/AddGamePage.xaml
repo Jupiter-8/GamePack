@@ -117,7 +117,9 @@
                         Category
                     </TextBlock>
                     <ComboBox
-                        Style="{x:Null}"
+                        Style="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}"
+                        Background="DimGray"
+                        Foreground="White"
                         Margin="10, 7, 0, 20"
                         Height="30"
                         Width="350"

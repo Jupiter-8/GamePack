@@ -1,4 +1,4 @@
-﻿<Page x:Class="GamePack.Wpf.Pages.ProfilePage"
+﻿<Page x:Class="GamePack.Wpf.Pages.AccountPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:GamePack.Wpf.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="600"
-      Title="ProfilePage">
+      Title="AccountPage">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -22,7 +22,7 @@
             FontFamily="Brutal Type"
             FontWeight="Bold"
             Foreground="{StaticResource CaptionFontBrush}">
-            Your profile
+            Your account
         </TextBlock>
         <TextBlock 
             Grid.Row="1"

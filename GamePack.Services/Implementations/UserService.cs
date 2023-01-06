@@ -25,5 +25,11 @@ namespace GamePack.Services.Implementations
 
         public bool CheckIfUserExists(string username)
             => _dbContext.Users.Any(x => x.Username == username);
+
+        public void DeleteUser(User user)
+        {
+            _dbContext.Users.Remove(user);
+            _dbContext.SaveChanges();
+        }
     }
 }

@@ -10,6 +10,7 @@
             Username = username;
             Password = password;
             AvatarPath = avatarPath;
+            SignedUpDate = DateTime.UtcNow;
         }
 
         /// <summary>
@@ -26,6 +27,11 @@
         /// Gets or sets avatar path.
         /// </summary>
         public string AvatarPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets date when user has been registered.
+        /// </summary>
+        public DateTime SignedUpDate { get; set; }
 
         /// <summary>
         /// Gets or sets games.

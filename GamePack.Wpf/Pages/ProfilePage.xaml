@@ -8,7 +8,54 @@
       d:DesignHeight="450" d:DesignWidth="600"
       Title="ProfilePage">
 
-    <Grid Background="Beige">
-        
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock 
+            Grid.Row="0"
+            Margin="20, 10, 0, 0"
+            FontSize="32"
+            FontFamily="Brutal Type"
+            FontWeight="Bold"
+            Foreground="{StaticResource CaptionFontBrush}">
+            Your profile
+        </TextBlock>
+        <TextBlock 
+            Grid.Row="1"
+            Margin="20, 10, 0, 0"
+            FontSize="16"
+            FontFamily="Brutal Type"
+            FontWeight="Bold"
+            Foreground="{StaticResource CaptionFontBrush}">
+            Username:
+            <TextBlock 
+                Text="{Binding Path=User.Username}"
+                FontWeight="Normal"/>
+        </TextBlock>
+        <TextBlock 
+            Grid.Row="1"
+            Margin="20, 40, 0, 0"
+            FontSize="16"
+            FontFamily="Brutal Type"
+            FontWeight="Bold"
+            Foreground="{StaticResource CaptionFontBrush}">
+            Signed Up:
+            <TextBlock 
+                Text="{Binding Path=User.SignedUpDate}"
+                FontWeight="Normal"/>
+        </TextBlock>
+        <Button 
+            Style="{DynamicResource DefaultAppButton}"
+            Margin="20, 0, 0, 0"
+            Content="Delete Account"
+            Grid.Row="1"
+            Height="30"
+            Width="150"
+            HorizontalAlignment="Left"
+            Click="DeleteAccount_OnClick"/>
     </Grid>
 </Page>

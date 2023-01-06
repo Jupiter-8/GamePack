@@ -3,12 +3,14 @@ using GamePack.Services.Interfaces;
 using GamePack.Wpf.Factories;
 using GamePack.Wpf.Stores;
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace GamePack.Wpf.Pages
 {
@@ -30,7 +32,7 @@ namespace GamePack.Wpf.Pages
             _addGamePageFactory = addGamePageFactory;
             _gameService = gameService;
             _userStore = userStore;
-            Games = _gameService.GetGamesForUser(_userStore.CurrentUser.Id);
+            Games = new ObservableCollection<Game>(_gameService.GetGamesForUser(_userStore.CurrentUser.Id));
             InitializeComponent();
         }
 
@@ -41,8 +43,8 @@ namespace GamePack.Wpf.Pages
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private List<Game> _games;
-        public List<Game> Games
+        private ObservableCollection<Game> _games;
+        public ObservableCollection<Game> Games
         {
             get { return _games; }
             set { _games = value; }
@@ -52,7 +54,7 @@ namespace GamePack.Wpf.Pages
         public Game SelectedGame
         {
             get { return _selectedGame; }
-            set 
+            set
             {
                 _selectedGame = value;
                 OnPropertyChanged();
@@ -84,9 +86,27 @@ namespace GamePack.Wpf.Pages
             }
 
             var process = Process.Start(_selectedGame.ExePath);
-            _selectedGame.LastRun = DateTime.UtcNow;
-            _selectedGame.ProcessName = process.ProcessName;
-            _gameService.UpdateGame(_selectedGame);
+            var game = _games.First(x => x.Id == _selectedGame.Id);
+            game.LastRun = DateTime.UtcNow;
+            game.ProcessName = process.ProcessName;
+            _gameService.UpdateGame(game);
+            CollectionViewSource.GetDefaultView(Games).Refresh();
+        }
+
+        private void DeleteGame_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (_selectedGame == null)
+            {
+                return;
+            }
+
+            var result = MessageBox.Show($"Are you sure that you want to delete game: {_selectedGame.Title} from your library?", "Delete Game", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                _gameService.DeleteGame(_selectedGame);
+                MessageBox.Show($"Game '{_selectedGame.Title}' has been deleted from your library.");
+                Games.Remove(_selectedGame);
+            }
         }
     }
 }

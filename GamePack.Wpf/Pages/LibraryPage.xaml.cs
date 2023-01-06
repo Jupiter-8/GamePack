@@ -93,14 +93,28 @@ namespace GamePack.Wpf.Pages
             var existingProcesses = Process.GetProcessesByName(_selectedGame.ProcessName);
             if (existingProcesses.Length != 0)
             {
-                MessageBox.Show($"Game {_selectedGame.Title} already runs!");
+                MessageBox.Show($"Game {_selectedGame.Title} already runs!", "Launch Game");
                 return;
             }
 
-            var process = Process.Start(_selectedGame.ExePath);
+            Process process = null;
+
+            try
+            {
+                process = Process.Start(_selectedGame.ExePath);
+            }
+            catch (Exception)
+            {
+                var result = MessageBox.Show($"Game '{_selectedGame.Title}' cannot be launched due to error. Do you want to delete it from your library?", "Launch Game", MessageBoxButton.YesNo);
+                if(result == MessageBoxResult.Yes) 
+                {
+                    DeleteGame(_selectedGame);
+                }
+            }
+
             var game = _games.First(x => x.Id == _selectedGame.Id);
             game.LastRun = DateTime.UtcNow;
-            game.ProcessName = process.ProcessName;
+            game.ProcessName = process?.ProcessName;
             _gameService.UpdateGame(game);
             CollectionViewSource.GetDefaultView(Games).Refresh();
         }
@@ -115,9 +129,7 @@ namespace GamePack.Wpf.Pages
             var result = MessageBox.Show($"Are you sure that you want to delete game '{_selectedGame.Title}' from your library?", "Delete Game", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
-                _gameService.DeleteGame(_selectedGame);
-                MessageBox.Show($"Game '{_selectedGame.Title}' has been deleted from your library.");
-                Games.Remove(_selectedGame);
+                DeleteGame(_selectedGame);
             }
         }
 
@@ -142,6 +154,13 @@ namespace GamePack.Wpf.Pages
             }
 
             CollectionViewSource.GetDefaultView(Games).Refresh();
+        }
+
+        private void DeleteGame(Game game)
+        {
+            _gameService.DeleteGame(game);
+            MessageBox.Show($"Game '{game.Title}' has been deleted from your library.", "Delete Game");
+            Games.Remove(game);
         }
     }
 }

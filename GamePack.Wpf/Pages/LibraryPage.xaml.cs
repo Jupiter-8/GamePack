@@ -1,5 +1,6 @@
 ﻿using GamePack.Domain.Entities;
 using GamePack.Services.Interfaces;
+using GamePack.Wpf.Enumerations;
 using GamePack.Wpf.Factories;
 using GamePack.Wpf.Stores;
 using System;
@@ -32,7 +33,7 @@ namespace GamePack.Wpf.Pages
             _addGamePageFactory = addGamePageFactory;
             _gameService = gameService;
             _userStore = userStore;
-            Games = new ObservableCollection<Game>(_gameService.GetGamesForUser(_userStore.CurrentUser.Id));
+            Games = new ObservableCollection<Game>(_gameService.GetGamesForUser(_userStore.CurrentUser.Id).OrderBy(x => x.Title));
             InitializeComponent();
         }
 
@@ -47,7 +48,11 @@ namespace GamePack.Wpf.Pages
         public ObservableCollection<Game> Games
         {
             get { return _games; }
-            set { _games = value; }
+            set 
+            {
+                _games = value;
+                OnPropertyChanged();
+            }
         }
 
         private Game _selectedGame;
@@ -61,14 +66,21 @@ namespace GamePack.Wpf.Pages
             }
         }
 
+        private SortGamesOption _selectedSortByOption;
+        public SortGamesOption SelectedSortByOption
+        {
+            get { return _selectedSortByOption; }
+            set
+            {
+                _selectedSortByOption = value;
+                OnPropertyChanged();
+                SortGames(value);
+            }
+        }
+
         private void AddGame_OnClick(object sender, RoutedEventArgs e)
         {
             ((MainWindow)Application.Current.MainWindow).SubFrame.Navigate(_addGamePageFactory.Create());
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
 
         private void PlayGame_OnClick(object sender, RoutedEventArgs e)
@@ -107,6 +119,29 @@ namespace GamePack.Wpf.Pages
                 MessageBox.Show($"Game '{_selectedGame.Title}' has been deleted from your library.");
                 Games.Remove(_selectedGame);
             }
+        }
+
+        private void SortGames(SortGamesOption option)
+        {
+            switch (option)
+            {
+                case SortGamesOption.TitleAscending:
+                    Games = new(_games.OrderBy(x => x.Title));
+                    break;
+                case SortGamesOption.TitleDescending:
+                    Games = new(_games.OrderByDescending(x => x.Title));
+                    break;
+                case SortGamesOption.LastPlayedAscending:
+                    Games = new(_games.OrderBy(x => x.LastRun).ToList());
+                    break;
+                case SortGamesOption.LastPlayedDescending:
+                    Games = new(_games.OrderByDescending(x => x.LastRun).ToList());
+                    break;
+                default:
+                    break;
+            }
+
+            CollectionViewSource.GetDefaultView(Games).Refresh();
         }
     }
 }

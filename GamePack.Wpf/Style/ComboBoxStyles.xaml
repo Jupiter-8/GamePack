@@ -264,14 +264,15 @@
     <Style x:Key="FlatComboBoxStyle1" TargetType="{x:Type ComboBox}">
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FontSize" Value="17"/>
-        <Setter Property="FontFamily" Value="Lato"/>
+        <Setter Property="FontFamily" Value="Brutal Type"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource ComboBox.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ComboBox.Static.Border}"/>
         <Setter Property="Foreground" Value="#FFFFFF"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="MinHeight" Value="38"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="200"/>
         <Setter Property="MaxDropDownHeight" Value="100"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>

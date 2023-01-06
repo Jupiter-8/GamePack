@@ -4,12 +4,21 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:converters="clr-namespace:GamePack.Wpf.Converters"
+      xmlns:enums="clr-namespace:GamePack.Wpf.Enumerations"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LibraryPage">
 
     <Page.Resources>
         <converters:Base64ImageConverter x:Key="Base64ImageConverter"/>
+        <converters:EnumDescriptionConverter x:Key="EnumDescriptionConverter"/>
+        <ObjectDataProvider x:Key="SortByOptions"
+           MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:SortGamesOption"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
     </Page.Resources>
 
     <Grid Background="Transparent">
@@ -32,9 +41,13 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             SelectedIndex="0"
-            IsDropDownOpen="True" SelectionChanged="ComboBox_SelectionChanged">
-            <ComboBoxItem Content="Recent"/>
-            <ComboBoxItem Content="Alphabetical"/>
+            ItemsSource="{Binding Source={StaticResource SortByOptions}}"
+            SelectedItem="{Binding SelectedSortByOption}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Converter={StaticResource EnumDescriptionConverter}}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
 
         <Button 
@@ -45,17 +58,6 @@
             Content="Add game"
             HorizontalAlignment="Center"
          />
-
-        <!--<ListBox ItemsSource="{Binding Games}" Margin="30,50">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{Binding Image, Converter={StaticResource Base64ImageConverter}}"/>
-                        <TextBlock Text="{Binding Title}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>-->
 
         <DataGrid
             ItemsSource="{Binding Games}"

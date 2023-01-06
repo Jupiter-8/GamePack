@@ -100,7 +100,7 @@ namespace GamePack.Wpf.Pages
                 return;
             }
 
-            var result = MessageBox.Show($"Are you sure that you want to delete game: {_selectedGame.Title} from your library?", "Delete Game", MessageBoxButton.YesNo);
+            var result = MessageBox.Show($"Are you sure that you want to delete game '{_selectedGame.Title}' from your library?", "Delete Game", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
                 _gameService.DeleteGame(_selectedGame);

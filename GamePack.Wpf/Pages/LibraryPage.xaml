@@ -152,7 +152,7 @@
                 <ToggleButton x:Name="toggleButton" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="3" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton}"/>
 
                 <Path Grid.Column="0"
-      Data="{StaticResource WorldIcon}"
+      Data="{StaticResource ListViewIcon}"
       Height="18"
       Fill="{TemplateBinding Foreground}"
       HorizontalAlignment="Right"
@@ -447,7 +447,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock
-            FontSize="17"
+            FontSize="28"
             Foreground="White"
             Text="Sort by: "
             HorizontalAlignment="Left"
@@ -456,7 +456,7 @@
 
         <ComboBox 
             Style="{DynamicResource ComboBoxStyle1}"
-            Margin="100,10"
+            Margin="140,10"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             SelectedIndex="0"
@@ -471,11 +471,12 @@
 
         <Button 
             Style="{DynamicResource DefaultAppButton}"
-            Height="30" 
-            Width="100" 
+            Margin="470,16,0,10"
+            Height="50" 
+            Width="100"
             Click="AddGame_OnClick"
             Content="Add game"
-            HorizontalAlignment="Center"
+            HorizontalAlignment="Left"
          />
 
         <DataGrid

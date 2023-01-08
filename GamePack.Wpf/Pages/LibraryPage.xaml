@@ -503,6 +503,16 @@
             BorderBrush="Transparent"
             BorderThickness="2"
             HeadersVisibility="Column" Grid.Row="1">
+            
+            <DataGrid.Resources>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Style>
+            </DataGrid.Resources>
+
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>

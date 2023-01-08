@@ -278,6 +278,7 @@
                                 Fill="{StaticResource BackIconBrush}"
                                 Stretch="Uniform"/>
 
+
                             <Rectangle
                                 Grid.Column="1"
                                 Fill="{StaticResource BorderBrush}"

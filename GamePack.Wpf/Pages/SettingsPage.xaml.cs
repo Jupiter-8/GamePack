@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,25 @@ namespace GamePack.Wpf.Pages
         public SettingsPage()
         {
             InitializeComponent();
+        }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.MainWindow != null)
+                ((MainWindow) Application.Current.MainWindow).MainFrame.GoBack();
+        }
+
+        private void Hyperlink_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            if (((Hyperlink) e.Source).Inlines.FirstOrDefault() is Run run && !run.Text.Contains("Logs"))
+                Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            else
+            {
+                Process.Start(new ProcessStartInfo(
+                    $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\GamePack\Saved\Logs"));
+            }
+
+            e.Handled = true;
         }
     }
 }

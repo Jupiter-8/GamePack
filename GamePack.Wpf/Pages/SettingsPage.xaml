@@ -120,6 +120,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        
         <ControlTemplate x:Key="ComboBoxTemplate" TargetType="{x:Type ComboBox}">
             <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
                 <Grid.ColumnDefinitions>
@@ -189,6 +190,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        
         <ControlTemplate x:Key="ComboBoxEditableTemplate" TargetType="{x:Type ComboBox}">
             <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
                 <Grid.ColumnDefinitions>
@@ -319,6 +321,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        
         <Style x:Key="ComboBoxStyle1" TargetType="{x:Type ComboBox}">
             <Setter Property="FontFamily" Value="Lato"/>
             <Setter Property="FontSize" Value="18"/>
@@ -357,6 +360,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        
         <SolidColorBrush x:Key="OptionMark.Static.Background" Color="Transparent"/>
         <SolidColorBrush x:Key="OptionMark.Static.Border" Color="#EBEBEB"/>
         <SolidColorBrush x:Key="OptionMark.Static.CheckedBorder" Color="#0057BD"/>
@@ -364,6 +368,7 @@
         <SolidColorBrush x:Key="CheckBoxOuter.MouseOver.UnChecked.Background" Color="#4D4D4D"/>
         <SolidColorBrush x:Key="CheckBox.MouseOver.Foreground" Color="#EBEBEB"/>
         <SolidColorBrush x:Key="OptionMark.Static.Glyph" Color="#0057BD"/>
+        
         <Style TargetType="{x:Type CheckBox}">
             <Setter Property="Background" Value="{StaticResource OptionMark.Static.Background}"/>
             <Setter Property="BorderBrush" Value="{StaticResource OptionMark.Static.Border}"/>
@@ -427,6 +432,7 @@
             </Setter>
         </Style>
     </Page.Resources>
+    
     <Grid>
         <Button
             Style="{StaticResource SettingsNavBackButtonStyle}"
